@@ -4,21 +4,34 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 10.0f;
+    public float speed = 10f;
 
-    void Update()
+    private Rigidbody2D rb;
+
+    private void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void Update()
+    {
+        // Get input axis
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
-        transform.position = transform.position + new Vector3(horizontal * speed * Time.deltaTime, vertical * speed * Time.deltaTime, 0f);
+        // Calculate movement direction
+        Vector2 movement = new Vector2(horizontal, vertical);
+
+        // Move the player
+        rb.velocity = movement * speed;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Wall")
+        // Stop the player from moving if it's colliding with a wall
+        if (collision.gameObject.CompareTag("Wall"))
         {
-            Debug.Log("Wall");
+            rb.velocity = Vector2.zero;
         }
     }
 }
