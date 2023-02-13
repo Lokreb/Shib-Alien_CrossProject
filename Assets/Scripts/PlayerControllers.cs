@@ -32,6 +32,7 @@ public class PlayerControllers : MonoBehaviour
         //speed = speed + acc*Time.deltaTime*8;
         myRigidbody.velocity = new Vector2(speed*inputVector.x, speed*inputVector.y);
         //Debug.Log(inputVector.x);
+
         if(inputVector.x==1)
         {
             Debug.Log("Droite");
