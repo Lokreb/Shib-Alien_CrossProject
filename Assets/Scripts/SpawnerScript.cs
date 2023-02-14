@@ -104,7 +104,7 @@ public class SpawnerScript : MonoBehaviour
             gameManager.LoadLevel();
         } else if (GetComponent<SpriteRenderer>().sprite == weaponUpgrade)
         {
-            GameObject.Find("Weapon").GetComponent<WeaponScript>().UpgradeWeapon();
+         //   GameObject.Find("Weapon").GetComponent<WeaponScript>().UpgradeWeapon();
             Destroy(gameObject);
         }
     }
