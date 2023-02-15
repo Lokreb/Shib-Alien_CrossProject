@@ -16,7 +16,6 @@ public class PlayerScript : MonoBehaviour
     public bool turnedLeft = false;
     public Image healthFill;
     private float healthWidth;
-
     public Text mainText;
     public Image redOverlay;
     public Text expText;

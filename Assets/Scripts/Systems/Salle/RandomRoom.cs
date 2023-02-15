@@ -26,7 +26,7 @@ public class RandomRoom : MonoBehaviour
         SelectARoom();
 
 
-    }
+    } 
 
     public void SelectARoom()
     {

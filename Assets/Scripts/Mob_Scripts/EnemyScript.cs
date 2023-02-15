@@ -106,7 +106,7 @@ abstract public class EnemyScript : MonoBehaviour
             }
         }
         transform.rotation = Quaternion.identity;
-        */
+        */ 
     }
 
     public float getHealth()

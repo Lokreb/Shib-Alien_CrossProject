@@ -128,10 +128,10 @@ public class SpawnerScript : MonoBehaviour
 
     private IEnumerator SpawnWaves()
     {
-        Debug.Log("ok2");
+       
         while (actualWave < MaxWaves)
         {
-            Debug.Log("ok33333333333");
+           
             yield return spawnWait;
                 Debug.Log("actual  waves :" + actualWave);
                 for (int i = 0; i < Number_Mob; i++)
