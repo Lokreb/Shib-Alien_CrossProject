@@ -25,6 +25,7 @@ public class EnemyScript : MonoBehaviour
         int rnd = Random.Range(0, sprites.Length);
         GetComponent<SpriteRenderer>().sprite = sprites[rnd];
         target = GameObject.Find("Player").transform;
+        Debug.Log(target);
         health += (0.1f * gameManager.GetLevel());
     }
 

@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Wall
+  - Mob
+  - Spawner
   layers:
   - Default
   - TransparentFX

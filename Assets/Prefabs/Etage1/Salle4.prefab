@@ -1293,7 +1293,7 @@ GameObject:
   - component: {fileID: 6040893724750314104}
   m_Layer: 0
   m_Name: SpawnJoueur
-  m_TagString: Untagged
+  m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
