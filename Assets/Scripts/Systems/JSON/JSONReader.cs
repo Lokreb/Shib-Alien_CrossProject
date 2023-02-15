@@ -5,16 +5,30 @@ using UnityEngine;
 public class JSONReader : MonoBehaviour
 {
     [System.Serializable]
-    public class Objets
+    /*public class Objets
     {
         public string nom;
         public string type;
         public string[] etats;
         public int x;
         public int y;
-        public bool mobile;
         public Image image;
 
+    }*/
+
+    public class Player
+    {
+        public string nom;
+        public string type;
+        public int[] pv;
+        public int degats;
+        public float atkspeed;
+        public float firerate;
+        public float speed;
+        public int projectile;
+        public string[] pattern;
+        public int rebond;
+        public Image img;
     }
 
     [System.Serializable]
@@ -23,30 +37,60 @@ public class JSONReader : MonoBehaviour
         public string src;
         public int dimX;
         public int dimY;
-        public Clefs clefs;
     }
 
     [System.Serializable]
-
-    public class Clefs
+    public class Monstres
     {
-        public int x;
-        public int y;
+        public string nom;
+        public string type;
+        public int[] pv;
+        public int degats;
+        public Image img;
+
     }
 
     [System.Serializable]
-
-    public class ListeObjets
+    public class Boss
     {
-        public Objets[] objects;
+        public string nom;
+        public string type;
+        public int degats;
+        public Image img;
     }
 
-    public ListeObjets MyListeObjets = new ListeObjets();
+    [System.Serializable]
+    public class BonusPassifs
+    {
+        public string nom;
+        public string type;
+        public Image img;
+    }
+
+    [System.Serializable]
+    public class BonusActifs
+    {
+        public string nom;
+        public string type;
+        public int degats;
+        public float cooldown;
+        public Image img;
+    }
+
+
+    [System.Serializable]
+
+    public class ListeMonstres
+    {
+        public Monstres[] monstres;
+    }
+
+    public ListeMonstres MyListeObjets = new ListeMonstres();
 
 
     void Start()
     {
-        TextAsset jsonFile = Resources.Load<TextAsset>("objets");
-        MyListeObjets = JsonUtility.FromJson<ListeObjets>(jsonFile.text);
+        TextAsset jsonFile = Resources.Load<TextAsset>("Data");
+        MyListeObjets = JsonUtility.FromJson<ListeMonstres>(jsonFile.text);
     }
 }
