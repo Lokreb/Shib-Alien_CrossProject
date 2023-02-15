@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
 {
-    private float horizontal;
-    private float vertical;
-    private float speed = 4.0f;
+    public float horizontal;
+    public float vertical;
+    public float speed = 4.0f;
     Rigidbody2D rb;
 
     private float health = 200;

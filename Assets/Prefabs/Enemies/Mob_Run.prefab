@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -1468645139239291480}
   m_Layer: 0
   m_Name: Mob_Run
-  m_TagString: Untagged
+  m_TagString: Mob
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3168418261069033740}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.2346, y: -0.2346, z: 0}
+  m_LocalScale: {x: 0.6334, y: 0.6334, z: 0.6334}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e1c65c9463cd25345a06977205f3e197, type: 3}
-  m_Color: {r: 1, g: 0.48627448, b: 0.8447483, a: 1}
+  m_Color: {r: 0.82702917, g: 0.990566, b: 0.87568533, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -100,7 +100,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.017140463, y: -0.028377533}
+  m_Offset: {x: 0.037720233, y: -0.19301581}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -111,7 +111,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9262967, y: 0.94324493}
+  m_Size: {x: 0.9674563, y: 0.62572837}
   m_EdgeRadius: 0
 --- !u!50 &1614417162625620056
 Rigidbody2D:
@@ -146,3 +146,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c41a39814d31390428a336f5bfc187ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  deathSprite: {fileID: 21300000, guid: d44bd020bb3f18f45b86856d7598d454, type: 3}
+  sprites:
+  - {fileID: 21300000, guid: e1c65c9463cd25345a06977205f3e197, type: 3}
+  acceleration: 1
+  accelerationIntervalRange: 5
+  accelerationDurationRange: 5
+  stopDurationRange: 1

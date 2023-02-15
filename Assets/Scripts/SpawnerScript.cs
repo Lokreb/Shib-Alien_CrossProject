@@ -9,12 +9,7 @@ public class SpawnerScript : MonoBehaviour
     // public GameObject enemyPrefab;
     public Tilemap spawnPoints;
     private float timer;
-    public Sprite deathSprite;
-    public Sprite gateway;
     //public Tilemap tileMap = null;
-
-    public Sprite weaponUpgrade;
-
     public int Number_Mob = 5;
     public GameObject[] enemyPrefab;
     public List<Vector3> availablePlaces;
@@ -27,22 +22,22 @@ public class SpawnerScript : MonoBehaviour
     int actualWave = 0;
     static public bool IsFinish = false;
     static public bool AllKilled = false;
-
+    public float waveInterval = 7f; // Temps entre les vagues
+    private WaitForSeconds waveWait;
+    private WaitForSeconds spawnWait;
+    float spawnInterval = 2f;
 
     void Start()
     {
+
+
         actualWave =0;
         IsFinish = false;
         AllKilled = false;
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        //  Instantiate(enemyPrefab, spawnPoints[0].transform.position, Quaternion.identity);
-        // Instantiate(enemyPrefab, spawnPoints[1].transform.position, Quaternion.identity);
-        timer = Time.time + 5.0f;
+
+        
         rnd = Random.Range(0, enemyPrefab.Length);
-        //  GetComponent<SpriteRenderer>().sprite = Number_Mob[rnd];
-
-
-        //spawnPoints = transform.GetComponent<Tilemap>();
         availablePlaces = new List<Vector3>();
 
         for (int n = spawnPoints.cellBounds.xMin; n < spawnPoints.cellBounds.xMax; n++)
@@ -63,16 +58,29 @@ public class SpawnerScript : MonoBehaviour
             }
         }
         rndPlace = Random.Range(0, availablePlaces.Count);
+
+
+        waveInterval = Random.Range(6f, 13f);
+        spawnInterval = Random.Range(3f, 8f);
+        waveWait = new WaitForSeconds(waveInterval);
+        spawnWait = new WaitForSeconds(spawnInterval);
+        timer = Time.time + spawnInterval;
+        Debug.Log("ok");
+       
+            StartCoroutine(SpawnWaves());
+        
     }
 
 
     void Update()
     {
+        /*
 
         if (actualWave < MaxWaves)
         {
-            for (int j = 0; j <= MaxWaves; j++)
-            {
+            
+                Debug.Log(j);
+                Debug.Log("max waves :" + MaxWaves);
                 if (timer < Time.time && spawned_mob < Number_Mob)
                 {
 
@@ -95,10 +103,11 @@ public class SpawnerScript : MonoBehaviour
 
                 }
                 spawned_mob = 0;
-                actualWave++;
-            }
+                
+            
         }
-       else if (actualWave == MaxWaves)
+        */
+        if (actualWave == MaxWaves)
         { 
             IsFinish = true;
 
@@ -114,6 +123,71 @@ public class SpawnerScript : MonoBehaviour
     {
         Actual_Mob = Actual_Mob - 1;
     }
+
+
+
+    private IEnumerator SpawnWaves()
+    {
+        Debug.Log("ok2");
+        while (actualWave < MaxWaves)
+        {
+            Debug.Log("ok33333333333");
+            yield return spawnWait;
+                Debug.Log("actual  waves :" + actualWave);
+                for (int i = 0; i < Number_Mob; i++)
+                {
+                    // GetComponent<SpriteRenderer>().sprite = Number_Mob[rnd];
+                    Instantiate(enemyPrefab[rnd], availablePlaces[rndPlace], Quaternion.identity);
+                    availablePlaces.RemoveAt(rndPlace);
+                    rnd = Random.Range(0, enemyPrefab.Length);
+                    rndPlace = Random.Range(0, availablePlaces.Count);
+                    Actual_Mob++;
+                    //spawned_mob++;
+                }
+                yield return spawnWait;
+            
+            actualWave++;
+            if (actualWave < MaxWaves)
+            {
+                yield return waveWait;
+            }
+        }
+    }
+
+
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /*  public void TakeDamage(float amount)
       {
@@ -140,6 +214,6 @@ public class SpawnerScript : MonoBehaviour
               Invoke("DefaultColor", 0.3f);
           }
       }*/
-   
-}
+
+
 

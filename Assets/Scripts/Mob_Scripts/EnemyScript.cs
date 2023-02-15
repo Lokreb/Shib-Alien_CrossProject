@@ -5,14 +5,14 @@ using UnityEngine;
 abstract public class EnemyScript : MonoBehaviour  
 {
     protected float range;
-    protected Transform target;
+    public Transform target;
     protected float minDistance = 5.0f;
     protected bool targetCollision = false;
-    protected float speed = 2.0f;
-    protected float thrust = 1.5f;
-    public float health = 5;
+    protected float speed = 1.0f;
+    protected float health = 5;
     protected int hitStrength = 10;
-   
+    protected float thrust = 1.5f;
+
     public Sprite deathSprite;
     public Sprite[] sprites;
 
@@ -22,11 +22,7 @@ abstract public class EnemyScript : MonoBehaviour
     
     void Start()
     {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        int rnd = Random.Range(0, sprites.Length);
-        GetComponent<SpriteRenderer>().sprite = sprites[rnd];
-        target = GameObject.Find("Player").transform;
-        Debug.Log(target);
+       
         
     }
 
@@ -72,7 +68,6 @@ abstract public class EnemyScript : MonoBehaviour
             GetComponent<SpriteRenderer>().sortingOrder = -1;
             GetComponent<Collider2D>().enabled = false;
             transform.GetChild(0).gameObject.SetActive(false);
-            target.GetComponent<PlayerScript>().GainExperience(100);
             Invoke("EnemyDeath", 1.5f);
         } else
         {
@@ -96,10 +91,9 @@ abstract public class EnemyScript : MonoBehaviour
     {
         return hitStrength;
     }
-    protected void IaMob()
-    {
-        range = Vector2.Distance(transform.position, target.position);
-        if (range < minDistance && !isDead)
+    protected virtual void IaMob()
+    { /*
+        if (!isDead)
         {
             if (!targetCollision)
             {
@@ -112,6 +106,28 @@ abstract public class EnemyScript : MonoBehaviour
             }
         }
         transform.rotation = Quaternion.identity;
+        */
+    }
+
+    public float getHealth()
+    {
+        return health;
+    }
+
+    public void setHealth(float newHealth)
+    {
+        this.health = newHealth;
+    }
+
+
+    public float getspeed()
+    {
+        return speed;
+    }
+
+    public void setspeed(float newspeed)
+    {
+        this.speed = newspeed;
     }
 }
 

@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
 
-        DontDestroyOnLoad(player.gameObject);
+        //DontDestroyOnLoad(player.gameObject);
   
        DontDestroyOnLoad(gameObject);
         

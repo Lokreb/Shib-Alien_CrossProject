@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 10f;
+    public float speed = 5f;
 
     private Rigidbody2D rb;
 
@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // Stop the player from moving if it's colliding with a wall
-        if (collision.gameObject.CompareTag("Wall"))
+        if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Mob"))
         {
             rb.velocity = Vector2.zero;
         }
