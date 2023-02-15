@@ -2,23 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyScript : MonoBehaviour
+abstract public class EnemyScript : MonoBehaviour  
 {
-    private float range;
-    private Transform target;
-    private float minDistance = 5.0f;
-    private bool targetCollision = false;
-    private float speed = 2.0f;
-    private float thrust = 1.5f;
+    protected float range;
+    protected Transform target;
+    protected float minDistance = 5.0f;
+    protected bool targetCollision = false;
+    protected float speed = 2.0f;
+    protected float thrust = 1.5f;
     public float health = 5;
-    private int hitStrength = 10;
-
+    protected int hitStrength = 10;
+   
     public Sprite deathSprite;
     public Sprite[] sprites;
 
-    private GameManager gameManager;
+    protected GameManager gameManager;
 
-    private bool isDead = false;
+    protected bool isDead = false;
+    
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -26,28 +27,12 @@ public class EnemyScript : MonoBehaviour
         GetComponent<SpriteRenderer>().sprite = sprites[rnd];
         target = GameObject.Find("Player").transform;
         Debug.Log(target);
-        health += (0.1f * gameManager.GetLevel());
+        
     }
 
-    void Update()
-    {
-        range = Vector2.Distance(transform.position, target.position);
-        if(range < minDistance && !isDead)
-        {
-            if (!targetCollision)
-            {
-                // Get the position of the player
-                transform.LookAt(target.position);
 
-                // Correct the rotation
-                transform.Rotate(new Vector3(0, -90, 0), Space.Self);
-                transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0));
-            }
-        }
-        transform.rotation = Quaternion.identity;
-    }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    protected void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player") && !targetCollision)
         {
@@ -81,6 +66,7 @@ public class EnemyScript : MonoBehaviour
         if(health < 0)
         {
             isDead = true;
+            SpawnerScript.actualise_mob();
             GetComponent<Rigidbody2D>().velocity = Vector3.zero;
             GetComponent<SpriteRenderer>().sprite = deathSprite;
             GetComponent<SpriteRenderer>().sortingOrder = -1;
@@ -102,7 +88,7 @@ public class EnemyScript : MonoBehaviour
 
     void EnemyDeath()
     {
-        gameManager.SetZombieCount(-1);
+       
         Destroy(gameObject);
     }
 
@@ -110,4 +96,22 @@ public class EnemyScript : MonoBehaviour
     {
         return hitStrength;
     }
+    protected void IaMob()
+    {
+        range = Vector2.Distance(transform.position, target.position);
+        if (range < minDistance && !isDead)
+        {
+            if (!targetCollision)
+            {
+                // Get the position of the player
+                transform.LookAt(target.position);
+
+                // Correct the rotation
+                transform.Rotate(new Vector3(0, -90, 0), Space.Self);
+                transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0));
+            }
+        }
+        transform.rotation = Quaternion.identity;
+    }
 }
+
