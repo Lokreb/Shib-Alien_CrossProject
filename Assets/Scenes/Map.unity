@@ -2313,7 +2313,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 148981174246203753, guid: d08100cbd1661a145bd077a1c915f7df, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.33
+      value: 0.55
       objectReference: {fileID: 0}
     - target: {fileID: 148981174246203753, guid: d08100cbd1661a145bd077a1c915f7df, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3051,27 +3051,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 148981174246203755, guid: d08100cbd1661a145bd077a1c915f7df, type: 3}
   m_PrefabInstance: {fileID: 1312611273}
   m_PrefabAsset: {fileID: 0}
---- !u!50 &1523108344
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1523108341}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!114 &1523108345
 MonoBehaviour:
   m_ObjectHideFlags: 0
