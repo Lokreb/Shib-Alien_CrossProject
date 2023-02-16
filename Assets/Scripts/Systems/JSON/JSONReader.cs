@@ -12,7 +12,7 @@ public class JSONReader : MonoBehaviour
         public int pv;
         public int degats;
         public float atkspeed;
-        public float firerate;
+        public float projectilespeed;
         public float speed;
         public int projectile;
         public List<string> pattern = new List<string>();
@@ -53,6 +53,7 @@ public class JSONReader : MonoBehaviour
         public string nom;
         public int type;
         public int id;
+        public float increase;
         public int degats;
         public float cooldown;
         public string image;
