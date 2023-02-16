@@ -5,22 +5,11 @@ using UnityEngine;
 public class JSONReader : MonoBehaviour
 {
     [System.Serializable]
-    /*public class Objets
-    {
-        public string nom;
-        public string type;
-        public string[] etats;
-        public int x;
-        public int y;
-        public Image image;
-
-    }*/
 
     public class Player
     {
         public string nom;
-        public string type;
-        public int[] pv;
+        public int pv;
         public int degats;
         public float atkspeed;
         public float firerate;
@@ -28,25 +17,17 @@ public class JSONReader : MonoBehaviour
         public int projectile;
         public string[] pattern;
         public int rebond;
-        public Image img;
-    }
-
-    [System.Serializable]
-    public class Image
-    {
-        public string src;
-        public int dimX;
-        public int dimY;
+        public string image;
     }
 
     [System.Serializable]
     public class Monstres
     {
         public string nom;
-        public string type;
         public int[] pv;
         public int degats;
-        public Image img;
+        public int id;
+        public string image;
 
     }
 
@@ -54,27 +35,20 @@ public class JSONReader : MonoBehaviour
     public class Boss
     {
         public string nom;
-        public string type;
         public int degats;
-        public Image img;
+        public int id;
+        public string image;
     }
 
     [System.Serializable]
-    public class BonusPassifs
+    public class Bonus
     {
         public string nom;
-        public string type;
-        public Image img;
-    }
-
-    [System.Serializable]
-    public class BonusActifs
-    {
-        public string nom;
-        public string type;
+        public int type;
+        public int id;
         public int degats;
         public float cooldown;
-        public Image img;
+        public string image;
     }
 
 
@@ -85,12 +59,42 @@ public class JSONReader : MonoBehaviour
         public Monstres[] monstres;
     }
 
-    public ListeMonstres MyListeObjets = new ListeMonstres();
+    [System.Serializable]
+
+    public class ListeBoss
+    {
+        public Boss[] boss;
+    }
+
+    [System.Serializable]
+
+    public class ListeBonus
+    {
+        public Bonus[] bonus;
+    }
+
+    public Player joueur = new Player();
+    public ListeMonstres monstreListe = new ListeMonstres();
+    public ListeBoss bossListe = new ListeBoss();
+
+    public ListeBonus bonusListe = new ListeBonus();
 
 
     void Start()
     {
-        TextAsset jsonFile = Resources.Load<TextAsset>("Data");
-        MyListeObjets = JsonUtility.FromJson<ListeMonstres>(jsonFile.text);
+        /*TextAsset jsonFile1 = Resources.Load<TextAsset>("Player");
+        joueur = JsonUtility.FromJson<Player>(jsonFile1.text);
+        Debug.Log(joueur.nom);*/
+
+        /*TextAsset jsonFile2 = Resources.Load<TextAsset>("Monsters");
+        monstreListe = JsonUtility.FromJson<ListeMonstres>(jsonFile2.text);
+        Debug.Log(monstreListe.monstres[2].nom);*/
+
+        /*TextAsset jsonFile3 = Resources.Load<TextAsset>("Boss");
+        bossListe = JsonUtility.FromJson<ListeBoss>(jsonFile3.text);
+        Debug.Log(bossListe.boss[1].nom);*/
+
+        /*TextAsset jsonFile4 = Resources.Load<TextAsset>("Bonus");
+        bonusListe = JsonUtility.FromJson<ListeBonus>(jsonFile4.text);*/
     }
 }

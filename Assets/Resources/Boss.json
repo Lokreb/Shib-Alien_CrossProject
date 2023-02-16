@@ -1,0 +1,34 @@
+{
+    "boss" : [
+		{
+			"nom": "bossbase",
+			"degats": 1,
+			"id": 1,
+			"image": "x.png"
+		},
+		{
+			"nom": "bossglace",
+			"degats": 1,
+			"id": 2,
+			"image": "x.png"
+		},
+		{
+			"nom": "bosspoison",
+			"degats": 1,
+			"id": 3,
+			"image": "x.png"
+		},
+		{
+			"nom": "bossfeu",
+			"degats": 1,
+			"id": 4,
+			"image": "x.png"
+		},
+		{
+			"nom": "bossfinal",
+			"degats": 1,
+			"id": 5,
+			"image": "x.png"
+		}
+	]
+}
