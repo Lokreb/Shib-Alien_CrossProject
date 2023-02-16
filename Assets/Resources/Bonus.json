@@ -1,0 +1,62 @@
+[
+    {
+        "nom": "atkspeed",
+        "type": 1,
+        "id": 1,
+        "image": "x.png"
+        
+    },
+    {
+        "nom": "firespeed",
+        "type": 1,
+        "id": 2,
+        "image": "x.png"
+    },
+    {
+        "nom": "speed",
+        "type": 1,
+        "id": 3,
+        "image": "x.png"
+    },
+    {
+        "nom": "projectile",
+        "type": 1,
+        "id": 4,
+        "image": "x.png"
+    },
+    {
+        "nom": "pattern",
+        "type": 1,
+        "id": 5,
+        "image": "x.png"
+    },
+    {
+        "nom": "damage",
+        "type": 1,
+        "id": 6,
+        "image": "x.png"
+    },
+    {
+        "nom": "rebond",
+        "type": 1,
+        "id": 7,
+        "image": "x.png"
+    }
+    ,
+    {
+        "nom": "laser",
+        "type": 2,
+        "id": 8,
+        "degats": "3",
+        "cooldown": 60,
+        "image": "x.png"
+    },
+    {
+        "nom": "mines",
+        "type": 2,
+        "id": 9,
+        "degats": "5",
+        "cooldown": 10,
+        "image": "x.png"
+    }
+]

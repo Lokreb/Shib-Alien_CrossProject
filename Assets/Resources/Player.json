@@ -1,0 +1,12 @@
+{
+    "nom": "joueur",
+    "pv": 3,
+    "degats": 1,
+    "atkspeed": 1,
+    "firerate": 1,
+    "speed": 1,
+    "projectile": 1,
+    "pattern": ["simple", "double", "split", "ondulation", "orbite", "machinegun"],
+    "rebond": 1,
+    "image": "x.png"
+}
