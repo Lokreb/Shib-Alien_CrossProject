@@ -25,7 +25,7 @@
         "nom": "projectile",
         "type": 1,
         "id": 4,
-		"increase": 0.1,
+		"valeur": 1,
         "image": "x.png"
     },
     {
@@ -38,14 +38,14 @@
         "nom": "damage",
         "type": 1,
         "id": 6,
-		"increase": 1,
+		"valeur": 1,
         "image": "x.png"
     },
     {
         "nom": "rebond",
         "type": 1,
         "id": 7,
-		"increase": 1,
+		"valeur": 1,
         "image": "x.png"
     }
     ,

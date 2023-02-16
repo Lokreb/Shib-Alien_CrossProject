@@ -15,25 +15,25 @@ public class BonusScript : MonoBehaviour
             switch (bonus.nom)
             {
                 case "atkspeed":
-                    player.atkspeed += bonus[0].increase;
+                    player.atkspeed += bonus.increase;
                     break;
                 case "projectilespeed":
-                    player.projectilespeed += bonus[1].increase;
+                    player.projectilespeed += bonus.increase;
                     break;
                 case "speed":
-                    player.speed += bonus[2].increase;
+                    player.speed += bonus.increase;
                     break;
                 case "projectile":
-                    player.projectile += bonus[3].increase;
+                    player.projectile += bonus.valeur;
                     break;
                 case "pattern":
                     player.pattern.Add("new pattern"); // add the new pattern
                     break;
                     case "damage":
-                    player.degats += bonus[5].increase;
+                    player.degats += bonus.valeur;
                     break;
                 case "rebond":
-                    player.rebond += bonus[6].increase;
+                    player.rebond += bonus.valeur;
                     break;
                 default:
                     break;
