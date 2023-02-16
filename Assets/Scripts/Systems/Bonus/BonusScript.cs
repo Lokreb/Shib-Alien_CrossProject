@@ -35,6 +35,14 @@ public class BonusScript : MonoBehaviour
                 case "rebond":
                     player.rebond += bonus.valeur;
                     break;
+                    case "laser":
+                    // Add new laser to player's inventory
+                    //player.AddBonusWeapon(new LaserWeapon(bonus[8].degats, bonus[8].cooldown));
+                    break;
+                case "mines":
+                    // Add new mines to player's inventory
+                    //player.AddBonusWeapon(new MineWeapon(bonus[9].degats, bonus[9].cooldown));
+                    break;
                 default:
                     break;
             }
