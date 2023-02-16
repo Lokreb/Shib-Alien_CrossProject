@@ -13,7 +13,8 @@ public class SpawnerScript : MonoBehaviour
     public int Number_Mob = 5;
     public GameObject[] enemyPrefab;
     public List<Vector3> availablePlaces;
-    private GameManager gameManager;
+    public GameManager gameManager;
+    public gameData gqmedata;
     int rnd;
     int spawned_mob;
     static int Actual_Mob;
