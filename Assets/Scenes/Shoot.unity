@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &684333243 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8272677751452401033, guid: 0463a6a184d69634a8255104bfe3c1a3, type: 3}
+  m_PrefabInstance: {fileID: 1335754771}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &845865135
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,6 +221,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8272677751452401035, guid: 0463a6a184d69634a8255104bfe3c1a3, type: 3}
   m_PrefabInstance: {fileID: 1335754771}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1335754778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684333243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37e893c58a981624d80fb544493aeed0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firePoint: {fileID: 845865136}
+  bulletPrefab: {fileID: 7905685127634981526, guid: e2b64733c86fac34485afaf7f08bb051, type: 3}
+  bulletForce: 20
 --- !u!1 &1444930609
 GameObject:
   m_ObjectHideFlags: 0
