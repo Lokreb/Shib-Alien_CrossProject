@@ -24,11 +24,18 @@ public class JSONReader : MonoBehaviour
     public class Monstres
     {
         public string nom;
-        public List<int> pv = new List<int>();
         public int degats;
+        public List<EtageInfo> etage = new List<EtageInfo>();
         public int id;
         public string image;
 
+    }
+
+    [System.Serializable]
+    public class EtageInfo
+    {
+        public string id;
+        public int pv;
     }
 
     [System.Serializable]

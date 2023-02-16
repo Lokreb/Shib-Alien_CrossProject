@@ -1,36 +1,61 @@
 [
     {    
         "nom": "base",
-        "pv": [1, 2, 3],
         "degats": 1,
+        "etage":[
+            { "id": "FL01", "pv": 1 },      
+            { "id": "FL02", "pv": 2 },      
+            { "id": "FL03", "pv": 3 },      
+            { "id": "FL04", "pv": 3 },      
+            { "id": "FL05", "pv": 3 }
+        ],
         "id": 1,
         "image": "x.png"
     },
         {
         "nom": "runner",
-        "pv": [2, 4, 6],
         "degats": 1,
+        "etage":[
+            { "id": "FL01", "pv": 2 },
+            { "id": "FL02", "pv": 4 },
+            { "id": "FL03", "pv": 4 },
+            { "id": "FL04", "pv": 6 },
+            { "id": "FL05", "pv": 6 }
+        ],
         "id": 2,
         "image": "x.png"
     },
     {
         "nom": "shooter",
-        "pv": [2, 3, 5],
         "degats": 1,
+        "etage":[
+            { "id": "FL02", "pv": 2 },
+            { "id": "FL03", "pv": 3 },
+            { "id": "FL04", "pv": 5 },
+            { "id": "FL05", "pv": 5 }
+        ],
         "id": 3,        
         "image": "x.png"
     },
     {
         "nom": "tank",
-        "pv": [5, 10, 15],
         "degats": 1,
+        "etage":[
+            { "id": "FL02", "pv": 5 },
+            { "id": "FL03", "pv": 10 },
+            { "id": "FL04", "pv": 10 },
+            { "id": "FL05", "pv": 15 }
+        ],
         "id": 4,
         "image": "x.png"
     },
     {
         "nom": "costaud",
-        "pv": [8, 12],
         "degats": 1,
+        "etage":[
+            { "id": "FL04", "pv": 8 },
+            { "id": "FL05", "pv": 12 }
+        ],
         "id": 5,
         "image": "x.png"
     }
