@@ -1,28 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+// using System.Collections;
+// using System.Collections.Generic;
+// using UnityEngine;
 
-public class Shoot : MonoBehaviour
-{
+// public class Shoot : MonoBehaviour
+// {
 
-    public Transform firePoint;
-    public GameObject bulletPrefab;
+//     public Transform firePoint;
+//     public GameObject bulletPrefab;
 
-    public float bulletForce = 20f;
+//     public float bulletForce = 20f;
 
-    // Update is called once per frame
-    void Update()
-    {
-        // if(Input.GetKeyDown("space")&&horizontal>0)
-        // {
-        //     Shooting();
-        // }
-    }
+//     // Update is called once per frame
+//     void Update()
+//     {
+//         // if(Input.GetKeyDown("space")&&horizontal>0)
+//         // {
+//         //     Shooting();
+//         // }
+//     }
 
-    public void Shooting()
-    {
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
-    }
-}
+//     public void Shooting()
+//     {
+//         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+//         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+//         rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
+//     }
+// }
