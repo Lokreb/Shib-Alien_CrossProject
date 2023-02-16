@@ -65,7 +65,7 @@ public class SpawnerScript : MonoBehaviour
         waveWait = new WaitForSeconds(waveInterval);
         spawnWait = new WaitForSeconds(spawnInterval);
         timer = Time.time + spawnInterval;
-        Debug.Log("ok");
+        
        
             StartCoroutine(SpawnWaves());
         
@@ -140,7 +140,8 @@ public class SpawnerScript : MonoBehaviour
                     Instantiate(enemyPrefab[rnd], availablePlaces[rndPlace], Quaternion.identity);
                     availablePlaces.RemoveAt(rndPlace);
                     rnd = Random.Range(0, enemyPrefab.Length);
-                    rndPlace = Random.Range(0, availablePlaces.Count);
+                Debug.Log(rnd);
+                rndPlace = Random.Range(0, availablePlaces.Count);
                     Actual_Mob++;
                     //spawned_mob++;
                 }

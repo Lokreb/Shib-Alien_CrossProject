@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Mob_base : EnemyScript
 {
+    public float horizontal;
+    public float vertical;
+    public SpriteRenderer render;
+    public bool turnedLeft = false;
 
 
     // Start is called before the first frame update
@@ -22,6 +26,34 @@ public class Mob_base : EnemyScript
     void Update()
     {
         IaMob();
+
+        horizontal = target.position.x - transform.position.x;
+        vertical = target.position.y - transform.position.y;
+
+        turnedLeft = false;
+        if (horizontal > 0 && Mathf.Abs(vertical)< Mathf.Abs(horizontal))
+        {
+            // GetComponent<Animator>().Play("Right");
+            render.sprite = sprites[0];
+
+        }
+        else if (horizontal < 0 && Mathf.Abs(vertical) < Mathf.Abs(horizontal))
+        {
+            // GetComponent<Animator>().Play("Left");
+            render.sprite = sprites[1];
+            turnedLeft = true;
+        }
+        else if (vertical > 0 && Mathf.Abs(horizontal) < Mathf.Abs(vertical))
+        {
+            // GetComponent<Animator>().Play("Up");
+            render.sprite = sprites[2];
+        }
+        else if (vertical < 0 && Mathf.Abs(horizontal) < Mathf.Abs(vertical))
+        {
+            render.sprite = sprites[3];
+            // GetComponent<Animator>().Play("Down");
+        }
+       
     }
    override protected void IaMob()
     {

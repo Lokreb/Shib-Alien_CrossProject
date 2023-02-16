@@ -13,7 +13,7 @@ abstract public class EnemyScript : MonoBehaviour
     protected int hitStrength = 10;
     protected float thrust = 1.5f;
 
-    public Sprite deathSprite;
+    
     public Sprite[] sprites;
 
     protected GameManager gameManager;
@@ -64,7 +64,7 @@ abstract public class EnemyScript : MonoBehaviour
             isDead = true;
             SpawnerScript.actualise_mob();
             GetComponent<Rigidbody2D>().velocity = Vector3.zero;
-            GetComponent<SpriteRenderer>().sprite = deathSprite;
+            
             GetComponent<SpriteRenderer>().sortingOrder = -1;
             GetComponent<Collider2D>().enabled = false;
             transform.GetChild(0).gameObject.SetActive(false);
