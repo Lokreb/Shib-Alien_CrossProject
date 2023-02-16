@@ -12,6 +12,10 @@ public class PlayerMovement : MonoBehaviour
     public SpriteRenderer render;
 
     private Rigidbody2D rb;
+    public Transform firePoint;
+    public GameObject bulletPrefab;
+
+    public float bulletForce = 20f;
 
     private void Start()
     {
@@ -49,6 +53,11 @@ public class PlayerMovement : MonoBehaviour
             // GetComponent<Animator>().Play("Down");
         }
 
+        if(Input.GetKeyDown("space"))
+        {
+            Shooting();
+        }
+
         // Calculate movement direction
         Vector2 movement = new Vector2(horizontal, vertical);
 
@@ -63,5 +72,13 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = Vector2.zero;
         }
+    }
+
+
+     public void Shooting()
+    {
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
     }
 }

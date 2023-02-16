@@ -13,10 +13,10 @@ public class Shoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown("space"))
-        {
-            Shooting();
-        }
+        // if(Input.GetKeyDown("space")&&horizontal>0)
+        // {
+        //     Shooting();
+        // }
     }
 
     public void Shooting()
