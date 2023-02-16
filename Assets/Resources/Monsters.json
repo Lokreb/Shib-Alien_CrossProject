@@ -1,39 +1,37 @@
-{
-    "monsters" : [
-		{	
-		"nom": "base",
-		"pv": [1, 2, 3],
-		"degats": 1,
-		"id": 1,
-		"image": "x.png"
-	},
-		{
-		"nom": "runner",
-		"pv": [2, 4, 6],
-		"degats": 1,
-		"id": 2,
-		"image": "x.png"
-	},
-	{
-		"nom": "shooter",
-		"pv": [2, 3, 5],
-		"degats": 1,
-		"id": 3,		
-		"image": "x.png"
-	},
-	{
-		"nom": "tank",
-		"pv": [5, 10, 15],
-		"degats": 1,
-		"id": 4,
-		"image": "x.png"
-	},
-	{
-		"nom": "costaud",
-		"pv": [8, 12],
-		"degats": 1,
-		"id": 5,
-		"image": "x.png"
-	}
-	]
-}
+[
+    {    
+        "nom": "base",
+        "pv": [1, 2, 3],
+        "degats": 1,
+        "id": 1,
+        "image": "x.png"
+    },
+        {
+        "nom": "runner",
+        "pv": [2, 4, 6],
+        "degats": 1,
+        "id": 2,
+        "image": "x.png"
+    },
+    {
+        "nom": "shooter",
+        "pv": [2, 3, 5],
+        "degats": 1,
+        "id": 3,        
+        "image": "x.png"
+    },
+    {
+        "nom": "tank",
+        "pv": [5, 10, 15],
+        "degats": 1,
+        "id": 4,
+        "image": "x.png"
+    },
+    {
+        "nom": "costaud",
+        "pv": [8, 12],
+        "degats": 1,
+        "id": 5,
+        "image": "x.png"
+    }
+]

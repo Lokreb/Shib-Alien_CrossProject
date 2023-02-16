@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Newtonsoft.Json;
 
 public class JSONReader : MonoBehaviour
 {
     [System.Serializable]
-
     public class Player
     {
         public string nom;
@@ -15,7 +15,7 @@ public class JSONReader : MonoBehaviour
         public float firerate;
         public float speed;
         public int projectile;
-        public string[] pattern;
+        public List<string> pattern = new List<string>();
         public int rebond;
         public string image;
     }
@@ -24,7 +24,7 @@ public class JSONReader : MonoBehaviour
     public class Monstres
     {
         public string nom;
-        public int[] pv;
+        public List<int> pv = new List<int>();
         public int degats;
         public int id;
         public string image;
@@ -53,48 +53,39 @@ public class JSONReader : MonoBehaviour
 
 
     [System.Serializable]
-
     public class ListeMonstres
     {
-        public Monstres[] monstres;
+        public List<Monstres> monstres = new List<Monstres>();
     }
 
     [System.Serializable]
-
     public class ListeBoss
     {
-        public Boss[] boss;
+        public List<Boss> boss = new List<Boss>();
     }
 
     [System.Serializable]
-
     public class ListeBonus
     {
-        public Bonus[] bonus;
+        public List<Bonus> bonus = new List<Bonus>();
     }
+
+    public TextAsset playerData;
+    public TextAsset monstreData;
+    public TextAsset bossData;
+    public TextAsset bonusData;
 
     public Player joueur = new Player();
     public ListeMonstres monstreListe = new ListeMonstres();
     public ListeBoss bossListe = new ListeBoss();
-
     public ListeBonus bonusListe = new ListeBonus();
 
 
     void Start()
     {
-        /*TextAsset jsonFile1 = Resources.Load<TextAsset>("Player");
-        joueur = JsonUtility.FromJson<Player>(jsonFile1.text);
-        Debug.Log(joueur.nom);*/
-
-        /*TextAsset jsonFile2 = Resources.Load<TextAsset>("Monsters");
-        monstreListe = JsonUtility.FromJson<ListeMonstres>(jsonFile2.text);
-        Debug.Log(monstreListe.monstres[2].nom);*/
-
-        /*TextAsset jsonFile3 = Resources.Load<TextAsset>("Boss");
-        bossListe = JsonUtility.FromJson<ListeBoss>(jsonFile3.text);
-        Debug.Log(bossListe.boss[1].nom);*/
-
-        /*TextAsset jsonFile4 = Resources.Load<TextAsset>("Bonus");
-        bonusListe = JsonUtility.FromJson<ListeBonus>(jsonFile4.text);*/
+        joueur = JsonConvert.DeserializeObject<Player>(playerData.text);
+        monstreListe.monstres = JsonConvert.DeserializeObject<List<Monstres>>(monstreData.text);
+        bossListe.boss = JsonConvert.DeserializeObject<List<Boss>>(bossData.text);
+        bonusListe.bonus = JsonConvert.DeserializeObject<List<Bonus>>(bonusData.text);
     }
 }

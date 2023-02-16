@@ -251,5 +251,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 039ecf6022deb8f4897ba503fe7e06ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MyListeObjets:
+  playerData: {fileID: 4900000, guid: e97c38ae1b6536143883b6a6ce5dd358, type: 3}
+  monstreData: {fileID: 4900000, guid: 0ab4340aeb1b32a4592b2a9c8b34f6d3, type: 3}
+  bossData: {fileID: 4900000, guid: 32a62c14d6bd4e84da879105e82deb93, type: 3}
+  bonusData: {fileID: 4900000, guid: 76462bbb17b201c4ba05cf4089d6eb9b, type: 3}
+  joueur:
+    nom: 
+    pv: 0
+    degats: 0
+    atkspeed: 0
+    firerate: 0
+    speed: 0
+    projectile: 0
+    pattern: []
+    rebond: 0
+    image: 
+  monstreListe:
     monstres: []
+  bossListe:
+    boss: []
+  bonusListe:
+    bonus: []
