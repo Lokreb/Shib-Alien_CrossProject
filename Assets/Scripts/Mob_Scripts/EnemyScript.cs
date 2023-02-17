@@ -48,6 +48,12 @@ abstract public class EnemyScript : MonoBehaviour
             if (bottom) GetComponent<Rigidbody2D>().AddForce(-transform.up * thrust, ForceMode2D.Impulse);
             Invoke("FalseCollision", 0.5f);
         }
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            Debug.Log("bullet");
+            TakeDamage(health);
+            Debug.Log(health);
+        }   
     }
 
     void FalseCollision()
@@ -59,16 +65,17 @@ abstract public class EnemyScript : MonoBehaviour
     public void TakeDamage(float amount)
     {
         health -= amount;
-        if(health < 0)
+        if(health == 0)
         {
-            isDead = true;
-            SpawnerScript.actualise_mob();
-            GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+            // isDead = true;
+            // SpawnerScript.actualise_mob();
+            // GetComponent<Rigidbody2D>().velocity = Vector3.zero;
             
-            GetComponent<SpriteRenderer>().sortingOrder = -1;
-            GetComponent<Collider2D>().enabled = false;
-            transform.GetChild(0).gameObject.SetActive(false);
-            Invoke("EnemyDeath", 1.5f);
+            // GetComponent<SpriteRenderer>().sortingOrder = -1;
+            // GetComponent<Collider2D>().enabled = false;
+            // transform.GetChild(0).gameObject.SetActive(false);
+            //Invoke("EnemyDeath", 1.5f);
+            EnemyDeath();
         } else
         {
             transform.GetChild(0).gameObject.SetActive(true);
