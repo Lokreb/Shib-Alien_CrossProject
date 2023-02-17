@@ -10,6 +10,7 @@ public class PlayerControllers : MonoBehaviour
     private Rigidbody2D myRigidbody;
     public float speed =2;
     public float acc = 1;
+    public float speedRotation = 2;
 
     private void Awake()
     {
@@ -50,4 +51,13 @@ public class PlayerControllers : MonoBehaviour
             Debug.Log("Bas");
         }
     }
+
+    public void Rotate(InputAction.CallbackContext ctx)
+    {
+        Vector2 inputVector = ctx.ReadValue<Vector2>()*speedRotation;
+        transform.Rotate(0, inputVector.x, inputVector.y);
+    }
+
+
+    
 }
