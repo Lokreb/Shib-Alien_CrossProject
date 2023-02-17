@@ -97,4 +97,10 @@ public class JSONReader : MonoBehaviour
         bossListe.boss = JsonConvert.DeserializeObject<List<Boss>>(bossData.text);
         bonusListe.bonus = JsonConvert.DeserializeObject<List<Bonus>>(bonusData.text);
     }
+
+    public Bonus GetRandomBonus()
+    {
+        int index = Random.Range(0, bonusListe.bonus.Count);
+        return bonusListe.bonus[index];
+    }
 }
