@@ -1,8 +1,8 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-abstract public class EnemyScript : MonoBehaviour  
+abstract public class EnemyScript2 : MonoBehaviour  
 {
     protected float range;
     public Transform target;
@@ -30,7 +30,7 @@ abstract public class EnemyScript : MonoBehaviour
 
     protected void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") && !targetCollision)
+        if (collision.gameObject.CompareTag("Player"))
         {
             Vector3 contactPoint = collision.contacts[0].point;
             Vector3 center = collision.collider.bounds.center;
@@ -51,31 +51,30 @@ abstract public class EnemyScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Bullet"))
         {
             Debug.Log("bullet");
-            TakeDamage(health);
+            TakeDamage2(health);
             Debug.Log(health);
-        }   
+        }        
     }
 
-    void FalseCollision()
+    void FalseCollision2()
     {
         targetCollision = false;
         GetComponent<Rigidbody2D>().velocity = Vector3.zero;
     }
 
-    public void TakeDamage(float amount)
+    public void TakeDamage_(float amount)
     {
         health -= amount;
-        if(health == 0)
+        if(health < 0)
         {
-            // isDead = true;
-            // SpawnerScript.actualise_mob();
-            // GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+            isDead = true;
+            SpawnerScript.actualise_mob();
+            GetComponent<Rigidbody2D>().velocity = Vector3.zero;
             
-            // GetComponent<SpriteRenderer>().sortingOrder = -1;
-            // GetComponent<Collider2D>().enabled = false;
-            // transform.GetChild(0).gameObject.SetActive(false);
-            //Invoke("EnemyDeath", 1.5f);
-            EnemyDeath();
+            GetComponent<SpriteRenderer>().sortingOrder = -1;
+            GetComponent<Collider2D>().enabled = false;
+            transform.GetChild(0).gameObject.SetActive(false);
+            Invoke("EnemyDeath", 1.5f);
         } else
         {
             transform.GetChild(0).gameObject.SetActive(true);
@@ -83,22 +82,22 @@ abstract public class EnemyScript : MonoBehaviour
         }
     }
 
-    void HideBlood()
+    void HideBlood2()
     {
         transform.GetChild(0).gameObject.SetActive(false);
     }
 
-    void EnemyDeath()
+    void EnemyDeath2()
     {
        
         Destroy(gameObject);
     }
 
-    public int GetHitStrength()
+    public int GetHitStrength2()
     {
         return hitStrength;
     }
-    protected virtual void IaMob()
+    protected virtual void IaMob2()
     { /*
         if (!isDead)
         {
@@ -116,25 +115,35 @@ abstract public class EnemyScript : MonoBehaviour
         */ 
     }
 
-    public float getHealth()
+    public float getHealth2()
     {
         return health;
     }
 
-    public void setHealth(float newHealth)
+    public void setHealth2(float newHealth)
     {
         this.health = newHealth;
     }
 
 
-    public float getspeed()
+    public float getspeed2()
     {
         return speed;
     }
 
-    public void setspeed(float newspeed)
+    public void setspeed2(float newspeed)
     {
         this.speed = newspeed;
     }
+
+    public void TakeDamage2(float amount)
+    {
+        health -= amount;
+        if(health == 0)
+        {
+            EnemyDeath2();
+        }
+
+}
 }
 
