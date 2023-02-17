@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
    // public GameObject weapon;
     public GameObject hudCanvas;
     public GameObject NS;
+    public GameObject BlackScreen;
+    public GameObject Replay;
     public bool clear;
    
 
@@ -47,7 +49,16 @@ public class GameManager : MonoBehaviour
         player.transform.position = spwan.transform.position;
     }
 
+    public void GameOver()
+    {
+        BlackScreen.SetActive(true);
+        Replay.SetActive(true);
+    }
 
+    public void reloadGame()
+    {
+        SceneManager.LoadScene(0);
+    }
 
 
   
