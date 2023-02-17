@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject bulletPrefab2;
     public GameObject bulletPrefab3;
     public GameObject bulletPrefab4;
-
+    private bool isshooting = false;
     public float bulletForce = 50f;
 
     private void Start()
@@ -33,65 +33,12 @@ public class PlayerMovement : MonoBehaviour
         // Get input axis
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
-
         rbp.velocity = new Vector2(horizontal * speed, vertical * speed);
-        turnedLeft = false;
-        if (horizontal > 0)
-        {
-            // GetComponent<Animator>().Play("Right");
-            render.sprite = sprites[0];
-           
-            
-        }
-        else if (horizontal < 0)
-        {
-            // GetComponent<Animator>().Play("Left");
-            render.sprite = sprites[1];
-            turnedLeft = true;
-           
-        }
-        else if (vertical > 0)
-        {
-            // GetComponent<Animator>().Play("Up");
-            render.sprite = sprites[2];
-          
-        }
-        else if (vertical < 0)
-        {
-            render.sprite = sprites[3];
-           
-            // GetComponent<Animator>().Play("Down");
-        }
-        //----------------------------------------------------------------------------------------------
-        //----------------------------------------------------------------------------------------------
-        //----------------------------------------------------------------------------------------------
-        //----------------------------------------------------------------------------------------------
-
-        if (Input.GetKeyDown("d"))
-        {
-            render.sprite = sprites[0];
-            ShootingRight();
-        }
-        else if (Input.GetKeyDown("q"))
-        {
-            render.sprite = sprites[1];
-            ShootingLeft();
-        }
-       else if (Input.GetKeyDown("z"))
-        {
-            render.sprite = sprites[2];
-            ShootingUp();
-        }
-       else if (Input.GetKeyDown("s"))
-        {
-            render.sprite = sprites[3];
-            ShootingDown();
-        }
-
-
+        turnedLeft = false;     
+        shootOrNot();
+        shootingEye();
         // Calculate movement direction
         Vector2 movement = new Vector2(horizontal, vertical);
-
         // Move the player
         rbp.velocity = movement * speed;
     }
@@ -111,6 +58,7 @@ public class PlayerMovement : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab, firePointRight.position, firePointRight.rotation);
         Rigidbody2D rbb = bullet.GetComponent<Rigidbody2D>();
         rbb.AddForce(firePointRight.up * bulletForce, ForceMode2D.Impulse);
+        
     }
 
     public void ShootingLeft()
@@ -118,6 +66,7 @@ public class PlayerMovement : MonoBehaviour
         GameObject bullet2 = Instantiate(bulletPrefab2, firePointLeft.position, firePointLeft.rotation);
         Rigidbody2D rbb = bullet2.GetComponent<Rigidbody2D>();
         rbb.AddForce(firePointLeft.up * bulletForce, ForceMode2D.Impulse);
+        
     }
 
     public void ShootingUp()
@@ -125,6 +74,7 @@ public class PlayerMovement : MonoBehaviour
         GameObject bullet3 = Instantiate(bulletPrefab3, firePointUp.position, firePointUp.rotation);
         Rigidbody2D rbb = bullet3.GetComponent<Rigidbody2D>();
         rbb.AddForce(firePointUp.up * bulletForce, ForceMode2D.Impulse);
+       
     }
 
     public void ShootingDown()
@@ -133,5 +83,108 @@ public class PlayerMovement : MonoBehaviour
         Rigidbody2D rbb = bullet4.GetComponent<Rigidbody2D>();
         rbb.AddForce(firePointDown.up * bulletForce, ForceMode2D.Impulse);
         Debug.Log(bulletForce);
+        
+    }
+
+    public void shootingEye()
+    {
+
+        if (isshooting)
+        {
+            if (Input.GetKeyDown("d"))
+            {
+                render.sprite = sprites[0];
+
+            }
+            else if (Input.GetKeyDown("q"))
+            {
+                render.sprite = sprites[1];
+
+            }
+            else if (Input.GetKeyDown("z"))
+            {
+                render.sprite = sprites[2];
+
+            }
+            else if (Input.GetKeyDown("s"))
+            {
+                render.sprite = sprites[3];
+
+            }
+        }
+        else if (!isshooting)
+        {
+            if (horizontal > 0)
+            {
+                // GetComponent<Animator>().Play("Right");
+                render.sprite = sprites[0];
+            }
+            else if (horizontal < 0)
+            {
+                // GetComponent<Animator>().Play("Left");
+                render.sprite = sprites[1];
+                turnedLeft = true;
+            }
+            else if (vertical > 0)
+            {
+                // GetComponent<Animator>().Play("Up");
+                render.sprite = sprites[2];
+            }
+            else if (vertical < 0)
+            {
+                render.sprite = sprites[3];
+                // GetComponent<Animator>().Play("Down");
+            }
+        }
+
+
+
+    }
+
+    public void shootOrNot()
+    {
+
+        if (Input.GetKeyDown("d"))
+        {
+            isshooting = true;
+            ShootingRight();
+        }
+        else if (Input.GetKeyDown("q"))
+        {
+            isshooting = true;
+            ShootingLeft();
+        }
+        else if (Input.GetKeyDown("z"))
+        {
+            isshooting = true;
+            ShootingUp();
+        }
+        else if (Input.GetKeyDown("s"))
+        {
+            isshooting = true;
+            ShootingDown();
+        }
+
+
+
+        if (Input.GetKeyUp("d"))
+        {
+            isshooting = false;
+
+        }
+        else if (Input.GetKeyUp("q"))
+        {
+            isshooting = false;
+
+        }
+        else if (Input.GetKeyUp("z"))
+        {
+            isshooting = false;
+
+        }
+        else if (Input.GetKeyUp("s"))
+        {
+            isshooting = false;
+        }
     }
 }
