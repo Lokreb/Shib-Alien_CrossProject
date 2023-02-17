@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     //public GameObject hitEffect; //pour ajouter une animation d explosion
-
+    Rigidbody2D rb;
     void OnCollisionEnter2D(Collision2D collision)
     {
         //GameObject effect = (Instantiate(hitEffect, transform.position, Quaternion.identity));
@@ -13,6 +13,10 @@ public class Bullet : MonoBehaviour
         if(collision.gameObject.tag!="Bullet" && collision.gameObject.tag!="Player" )
         {
             Destroy(gameObject);
+        }
+       else if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Mob"))
+        {
+            rb.velocity = Vector2.zero;
         }
 
     }

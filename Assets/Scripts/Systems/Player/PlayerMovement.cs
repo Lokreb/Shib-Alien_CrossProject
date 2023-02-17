@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public Sprite[] sprites;
     public SpriteRenderer render;
 
-    private Rigidbody2D rb;
+    private Rigidbody2D rbp;
     public Transform firePointRight;
     public Transform firePointLeft;
     public Transform firePointDown;
@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rbp = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
@@ -34,16 +34,13 @@ public class PlayerMovement : MonoBehaviour
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
 
-        rb.velocity = new Vector2(horizontal * speed, vertical * speed);
+        rbp.velocity = new Vector2(horizontal * speed, vertical * speed);
         turnedLeft = false;
         if (horizontal > 0)
         {
             // GetComponent<Animator>().Play("Right");
             render.sprite = sprites[0];
-            if(Input.GetKeyDown("space"))
-            {
-                ShootingRight();
-            }
+           
             
         }
         else if (horizontal < 0)
@@ -51,28 +48,44 @@ public class PlayerMovement : MonoBehaviour
             // GetComponent<Animator>().Play("Left");
             render.sprite = sprites[1];
             turnedLeft = true;
-            if(Input.GetKeyDown("space"))
-            {
-                ShootingLeft();
-            }
+           
         }
         else if (vertical > 0)
         {
             // GetComponent<Animator>().Play("Up");
             render.sprite = sprites[2];
-            if(Input.GetKeyDown("space"))
-            {
-                ShootingUp();
-            }
+          
         }
         else if (vertical < 0)
         {
             render.sprite = sprites[3];
-            if(Input.GetKeyDown("space"))
-            {
-                ShootingDown();
-            }
+           
             // GetComponent<Animator>().Play("Down");
+        }
+        //----------------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------
+
+        if (Input.GetKeyDown("d"))
+        {
+            render.sprite = sprites[0];
+            ShootingRight();
+        }
+        else if (Input.GetKeyDown("q"))
+        {
+            render.sprite = sprites[1];
+            ShootingLeft();
+        }
+       else if (Input.GetKeyDown("z"))
+        {
+            render.sprite = sprites[2];
+            ShootingUp();
+        }
+       else if (Input.GetKeyDown("s"))
+        {
+            render.sprite = sprites[3];
+            ShootingDown();
         }
 
 
@@ -80,7 +93,7 @@ public class PlayerMovement : MonoBehaviour
         Vector2 movement = new Vector2(horizontal, vertical);
 
         // Move the player
-        rb.velocity = movement * speed;
+        rbp.velocity = movement * speed;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -88,7 +101,7 @@ public class PlayerMovement : MonoBehaviour
         // Stop the player from moving if it's colliding with a wall
         if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Mob"))
         {
-            rb.velocity = Vector2.zero;
+            rbp.velocity = Vector2.zero;
         }
     }
 
@@ -96,28 +109,29 @@ public class PlayerMovement : MonoBehaviour
     public void ShootingRight()
     {
         GameObject bullet = Instantiate(bulletPrefab, firePointRight.position, firePointRight.rotation);
-        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        rb.AddForce(firePointRight.up * bulletForce, ForceMode2D.Impulse);
+        Rigidbody2D rbb = bullet.GetComponent<Rigidbody2D>();
+        rbb.AddForce(firePointRight.up * bulletForce, ForceMode2D.Impulse);
     }
 
     public void ShootingLeft()
     {
         GameObject bullet2 = Instantiate(bulletPrefab2, firePointLeft.position, firePointLeft.rotation);
-        Rigidbody2D rb = bullet2.GetComponent<Rigidbody2D>();
-        rb.AddForce(firePointLeft.up * bulletForce, ForceMode2D.Impulse);
+        Rigidbody2D rbb = bullet2.GetComponent<Rigidbody2D>();
+        rbb.AddForce(firePointLeft.up * bulletForce, ForceMode2D.Impulse);
     }
 
     public void ShootingUp()
     {
         GameObject bullet3 = Instantiate(bulletPrefab3, firePointUp.position, firePointUp.rotation);
-        Rigidbody2D rb = bullet3.GetComponent<Rigidbody2D>();
-        rb.AddForce(firePointUp.up * bulletForce, ForceMode2D.Impulse);
+        Rigidbody2D rbb = bullet3.GetComponent<Rigidbody2D>();
+        rbb.AddForce(firePointUp.up * bulletForce, ForceMode2D.Impulse);
     }
 
     public void ShootingDown()
     {
         GameObject bullet4 = Instantiate(bulletPrefab4, firePointDown.position, firePointDown.rotation);
-        Rigidbody2D rb = bullet4.GetComponent<Rigidbody2D>();
-        rb.AddForce(firePointDown.up * bulletForce, ForceMode2D.Impulse);
+        Rigidbody2D rbb = bullet4.GetComponent<Rigidbody2D>();
+        rbb.AddForce(firePointDown.up * bulletForce, ForceMode2D.Impulse);
+        Debug.Log(bulletForce);
     }
 }
