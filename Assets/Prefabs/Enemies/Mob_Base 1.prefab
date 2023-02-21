@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -7162965219473121716}
   m_Layer: 0
   m_Name: Mob_Base 1
-  m_TagString: Untagged
+  m_TagString: Mob
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -147,7 +147,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  deathSprite: {fileID: 21300000, guid: 3416607784ad91544b80051c148a7475, type: 3}
   sprites:
   - {fileID: 21300000, guid: b2d29c95d05940846817d996e0351a4d, type: 3}
   - {fileID: 21300000, guid: 59f08720d3099ff438190bddaefb9ebf, type: 3}

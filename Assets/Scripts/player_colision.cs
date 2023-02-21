@@ -5,6 +5,7 @@ using UnityEngine;
 public class player_colision : MonoBehaviour
 {
     public GameManager GM;
+   [SerializeField] PlayerMovement pm;
     public int LifePoint = 10;
     // Start is called before the first frame update
     void Start()
@@ -17,8 +18,10 @@ public class player_colision : MonoBehaviour
     {
         if(LifePoint <= 0)
         {
+           
             GM.GameOver();
-            Destroy(gameObject);
+            dead();
+            gameObject.SetActive(false);
         }
     }
 
@@ -28,5 +31,10 @@ public class player_colision : MonoBehaviour
         {
             LifePoint = LifePoint - 1;
         }
+    }
+
+    public void dead()
+    {
+        pm.IsAlive = false;
     }
 }

@@ -78,8 +78,9 @@ abstract public class EnemyScript : MonoBehaviour
             EnemyDeath();
         } else
         {
-            transform.GetChild(0).gameObject.SetActive(true);
-            Invoke("HideBlood", 0.25f);
+            // transform.GetChild(0).gameObject.SetActive(true);
+            // Invoke("HideBlood", 0.25f);
+            Debug.Log("A¨Pie !!");
         }
     }
 

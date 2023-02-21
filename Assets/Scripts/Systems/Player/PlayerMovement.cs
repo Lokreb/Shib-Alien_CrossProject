@@ -6,35 +6,40 @@ public class PlayerMovement : MonoBehaviour
 {
     public float speed = 5f;
     public bool turnedLeft = false;
-    public float horizontal;
-    public float vertical;
-    public Sprite[] sprites;
+    private float horizontal;
+    private float vertical;
     public SpriteRenderer render;
-
+    public bool IsAlive = true;
     private Rigidbody2D rbp;
     public Transform firePointRight;
     public Transform firePointLeft;
     public Transform firePointDown;
     public Transform firePointUp;
     public GameObject bulletPrefab;
-    public GameObject bulletPrefab2;
-    public GameObject bulletPrefab3;
-    public GameObject bulletPrefab4;
     private bool isshooting = false;
     public float bulletForce = 50f;
+    public float AtkSpeed = 1f;
+    private WaitForSeconds atkDelaiDuration;
+    public int degats = 1;
+    public float Portee = 1f;
+    public Sprite[] sprites;
+   
 
     private void Start()
     {
         rbp = GetComponent<Rigidbody2D>();
+        atkDelaiDuration = new WaitForSeconds(1/AtkSpeed);
+       
     }
 
     private void Update()
     {
+        
         // Get input axis
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
         rbp.velocity = new Vector2(horizontal * speed, vertical * speed);
-        turnedLeft = false;     
+        turnedLeft = false;
         shootOrNot();
         shootingEye();
         // Calculate movement direction
@@ -55,23 +60,26 @@ public class PlayerMovement : MonoBehaviour
 
     public void ShootingRight()
     {
-        GameObject bullet = Instantiate(bulletPrefab, firePointRight.position, firePointRight.rotation);
-        Rigidbody2D rbb = bullet.GetComponent<Rigidbody2D>();
-        rbb.AddForce(firePointRight.up * bulletForce, ForceMode2D.Impulse);
+        
         
     }
 
     public void ShootingLeft()
     {
-        GameObject bullet2 = Instantiate(bulletPrefab2, firePointLeft.position, firePointLeft.rotation);
+        GameObject bullet2 = Instantiate(bulletPrefab, firePointLeft.position, firePointLeft.rotation);
+        if (bullet2.GetComponent<Bullet>() != null)
+        {
+            bullet2.GetComponent<Bullet>().Dmg = degats;
+        }
         Rigidbody2D rbb = bullet2.GetComponent<Rigidbody2D>();
         rbb.AddForce(firePointLeft.up * bulletForce, ForceMode2D.Impulse);
+
         
     }
 
     public void ShootingUp()
     {
-        GameObject bullet3 = Instantiate(bulletPrefab3, firePointUp.position, firePointUp.rotation);
+        GameObject bullet3 = Instantiate(bulletPrefab, firePointUp.position, firePointUp.rotation);
         Rigidbody2D rbb = bullet3.GetComponent<Rigidbody2D>();
         rbb.AddForce(firePointUp.up * bulletForce, ForceMode2D.Impulse);
        
@@ -79,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void ShootingDown()
     {
-        GameObject bullet4 = Instantiate(bulletPrefab4, firePointDown.position, firePointDown.rotation);
+        GameObject bullet4 = Instantiate(bulletPrefab, firePointDown.position, firePointDown.rotation);
         Rigidbody2D rbb = bullet4.GetComponent<Rigidbody2D>();
         rbb.AddForce(firePointDown.up * bulletForce, ForceMode2D.Impulse);
         Debug.Log(bulletForce);
@@ -144,47 +152,73 @@ public class PlayerMovement : MonoBehaviour
     public void shootOrNot()
     {
 
-        if (Input.GetKeyDown("d"))
+        if (Input.GetKeyDown("d") && !isshooting)
         {
             isshooting = true;
-            ShootingRight();
+            GameObject bullet = Instantiate(bulletPrefab, firePointRight.position, firePointRight.rotation);
+            if (bullet.GetComponent<Bullet>() != null)
+            {
+                bullet.GetComponent<Bullet>().Dmg = degats;
+                bullet.GetComponent<Bullet>().lifetime = Portee;
+            }
+            Rigidbody2D rbb = bullet.GetComponent<Rigidbody2D>();
+            rbb.AddForce(firePointRight.up * bulletForce, ForceMode2D.Impulse);
+            StartCoroutine(ShootingTime());
         }
-        else if (Input.GetKeyDown("q"))
+        else if (Input.GetKeyDown("q") && !isshooting)
         {
             isshooting = true;
-            ShootingLeft();
+            GameObject bullet = Instantiate(bulletPrefab, firePointLeft.position, firePointLeft.rotation);
+
+            if (bullet.GetComponent<Bullet>() != null)
+            {
+                bullet.GetComponent<Bullet>().Dmg = degats;
+                bullet.GetComponent<Bullet>().lifetime = Portee;
+            }
+            Rigidbody2D rbb = bullet.GetComponent<Rigidbody2D>();
+            rbb.AddForce(firePointLeft.up * bulletForce, ForceMode2D.Impulse);
+            StartCoroutine(ShootingTime());
         }
-        else if (Input.GetKeyDown("z"))
+        else if (Input.GetKeyDown("s") && !isshooting)
         {
             isshooting = true;
-            ShootingUp();
+            GameObject bullet = Instantiate(bulletPrefab, firePointDown.position, firePointDown.rotation);
+            if (bullet.GetComponent<Bullet>() != null)
+            {
+                bullet.GetComponent<Bullet>().Dmg = degats;
+                bullet.GetComponent<Bullet>().lifetime = Portee;
+            }
+            Rigidbody2D rbb = bullet.GetComponent<Rigidbody2D>();
+            rbb.AddForce(firePointDown.up * bulletForce, ForceMode2D.Impulse);
+            StartCoroutine(ShootingTime());
         }
-        else if (Input.GetKeyDown("s"))
+        else if (Input.GetKeyDown("z") && !isshooting)
         {
             isshooting = true;
-            ShootingDown();
+            GameObject bullet = Instantiate(bulletPrefab, firePointUp.position, firePointUp.rotation);
+            if (bullet.GetComponent<Bullet>() != null)
+            {
+                bullet.GetComponent<Bullet>().Dmg = degats;
+                bullet.GetComponent<Bullet>().lifetime = Portee;
+            }
+            Rigidbody2D rbb = bullet.GetComponent<Rigidbody2D>();
+            rbb.AddForce(firePointUp.up * bulletForce, ForceMode2D.Impulse);
+            StartCoroutine(ShootingTime());
         }
 
+    }
 
+    private IEnumerator ShootingTime()
+    {
+      
+                yield return atkDelaiDuration;
+              
+                    isshooting = false;
+               
+            
 
-        if (Input.GetKeyUp("d"))
-        {
-            isshooting = false;
-
-        }
-        else if (Input.GetKeyUp("q"))
-        {
-            isshooting = false;
-
-        }
-        else if (Input.GetKeyUp("z"))
-        {
-            isshooting = false;
-
-        }
-        else if (Input.GetKeyUp("s"))
-        {
-            isshooting = false;
-        }
+           
+        
     }
 }
+

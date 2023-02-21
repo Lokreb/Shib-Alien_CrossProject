@@ -27,7 +27,6 @@ public class Mob_runner : EnemyScript
         GetComponent<SpriteRenderer>().sprite = sprites[rnd];
         target = GameObject.Find("Player").transform;
         Debug.Log(target.name);
-
         setspeed(1.3f);
         setHealth(4f);
         initialspeed = speed;
@@ -44,7 +43,7 @@ public class Mob_runner : EnemyScript
     // Update is called once per frame
     void Update()
     {
-        IaMob();
+       // IaMob();
     }
 
     override protected void IaMob()
