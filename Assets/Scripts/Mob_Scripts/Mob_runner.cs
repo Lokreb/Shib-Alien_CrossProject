@@ -22,6 +22,7 @@ public class Mob_runner : EnemyScript
     // Start is called before the first frame update
     void Start()
     {
+        base.Start();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         int rnd = Random.Range(0, sprites.Length);
         GetComponent<SpriteRenderer>().sprite = sprites[rnd];

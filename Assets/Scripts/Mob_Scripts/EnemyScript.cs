@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 abstract public class EnemyScript : MonoBehaviour  
 {
@@ -12,17 +13,18 @@ abstract public class EnemyScript : MonoBehaviour
     protected float health = 5;
     protected int hitStrength = 10;
     protected float thrust = 1.5f;
+    AIDestinationSetter AiDesti;
 
-    
     public Sprite[] sprites;
 
     protected GameManager gameManager;
 
     protected bool isDead = false;
     
-    void Start()
+     protected void Start()
     {
-       
+        AiDesti = GetComponent<AIDestinationSetter>();
+        AiDesti.target = GameObject.FindGameObjectsWithTag("Player")[0].transform;
         
     }
 

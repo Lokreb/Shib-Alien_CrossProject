@@ -6,11 +6,12 @@ public class RandomRoom : MonoBehaviour
 {
     [System.Serializable]
     public class ListWarper
+     
     {
         public List<GameObject> RoomList;
     }
     [SerializeField] List<ListWarper> Floor_List;
-
+   
     int randomIndex;
     public int Floor_number = 5;
     int actual_floor = 0;
@@ -40,8 +41,9 @@ public class RandomRoom : MonoBehaviour
             randomPrefab.SetActive(true);
             resetPrefab = randomPrefab;
             Floor_List[actual_floor].RoomList.RemoveAt(randomIndex);
-             
-            
+        AstarPath.active.Scan();
+
+
 
 
     }
