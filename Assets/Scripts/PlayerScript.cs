@@ -35,6 +35,7 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        checklife();
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
 
@@ -60,18 +61,11 @@ public class PlayerScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            transform.GetChild(0).gameObject.SetActive(true);
-            health -= collision.gameObject.GetComponent<EnemyScript>().GetHitStrength();
-            if (health < 1)
-            {
-                healthFill.enabled = false;
-                mainText.gameObject.SetActive(true);
-                mainText.text = "Game Over";
-                redOverlay.gameObject.SetActive(true);
-            }
-            Vector2 temp = new Vector2(healthWidth * (health / startHealth), healthFill.sprite.rect.height);
-            healthFill.rectTransform.sizeDelta = temp;
-            Invoke("HidePlayerBlood", 0.25f);
+            getHited();
+          
+         //   Vector2 temp = new Vector2(healthWidth * (health / startHealth), healthFill.sprite.rect.height);
+          //  healthFill.rectTransform.sizeDelta = temp;
+           
         }
   
 }
@@ -91,5 +85,20 @@ public class PlayerScript : MonoBehaviour
     {
         mainText.gameObject.SetActive(false);
         redOverlay.gameObject.SetActive(false);
+    }
+
+    public void checklife()
+    {
+        if (health < 1)
+        {
+            healthFill.enabled = false;
+            mainText.gameObject.SetActive(true);
+            mainText.text = "Game Over";
+            redOverlay.gameObject.SetActive(true);
+        }
+   }
+    public void getHited()
+    {
+        health = health - 1;
     }
 }

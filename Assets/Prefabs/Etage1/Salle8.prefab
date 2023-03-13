@@ -2905,6 +2905,15 @@ MonoBehaviour:
   enemyPrefab:
   - {fileID: 3168418261069033740, guid: e92e30cb78048d84ea9d59d114ccf3ef, type: 3}
   - {fileID: 3168418261069033740, guid: cdcb8b65145efe44082bb57ec7f4eb3b, type: 3}
+  - {fileID: 3168418261069033740, guid: 6e4c0e5754aaf5846a0e854054f434f7, type: 3}
+  - {fileID: 3168418261069033740, guid: 8ed5da110081801409a699b20637aee6, type: 3}
+  - {fileID: 3168418261069033740, guid: e92e30cb78048d84ea9d59d114ccf3ef, type: 3}
+  - {fileID: 3168418261069033740, guid: e92e30cb78048d84ea9d59d114ccf3ef, type: 3}
+  - {fileID: 3168418261069033740, guid: cdcb8b65145efe44082bb57ec7f4eb3b, type: 3}
+  - {fileID: 3168418261069033740, guid: cdcb8b65145efe44082bb57ec7f4eb3b, type: 3}
+  - {fileID: 3168418261069033740, guid: cdcb8b65145efe44082bb57ec7f4eb3b, type: 3}
+  - {fileID: 3168418261069033740, guid: 8ed5da110081801409a699b20637aee6, type: 3}
+  - {fileID: 3168418261069033740, guid: 8ed5da110081801409a699b20637aee6, type: 3}
   availablePlaces: []
   MaxWaves: 2
   waveInterval: 7

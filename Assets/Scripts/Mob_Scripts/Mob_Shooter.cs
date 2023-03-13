@@ -2,15 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class Mob_Shooter : EnemyScript
 {
-    public float speed = 5f;
-    public bool turnedLeft = false;
-    private float horizontal;
-    private float vertical;
+    public float horizontal;
+    public float vertical;
     public SpriteRenderer render;
-    public bool IsAlive = true;
-    private Rigidbody2D rbp;
+    public bool turnedLeft = false;
     public Transform firePointRight;
     public Transform firePointLeft;
     public Transform firePointDown;
@@ -22,42 +19,36 @@ public class PlayerMovement : MonoBehaviour
     private WaitForSeconds atkDelaiDuration;
     public int degats = 1;
     public float Portee = 1f;
-    public Sprite[] sprites;
-   
 
+
+    // Start is called before the first frame update
     private void Start()
     {
-        rbp = GetComponent<Rigidbody2D>();
-        atkDelaiDuration = new WaitForSeconds(1/AtkSpeed);
+        base.Start();
+        target = GameObject.FindGameObjectsWithTag("Player")[0].transform;
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        int rnd = Random.Range(0, sprites.Length);
+        GetComponent<SpriteRenderer>().sprite = sprites[rnd];
+        atkDelaiDuration = new WaitForSeconds(1 / AtkSpeed);
+        Debug.Log(target.name);
+        setspeed(1.1f);
+        setHealth(3f);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        IaMob();
+
+        horizontal = target.position.x - transform.position.x;
+        vertical = target.position.y - transform.position.y;
        
     }
-
-    private void Update()
+   override protected void IaMob()
     {
-        
-        // Get input axis
-        horizontal = Input.GetAxisRaw("Horizontal");
-        vertical = Input.GetAxisRaw("Vertical");
-        rbp.velocity = new Vector2(horizontal * speed, vertical * speed);
-        turnedLeft = false;
         shootOrNot();
-        shootingEye();
-        // Calculate movement direction
-        Vector2 movement = new Vector2(horizontal, vertical);
-        // Move the player
-        rbp.velocity = movement * speed;
+
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        // Stop the player from moving if it's colliding with a wall
-        if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Mob"))
-        {
-            rbp.velocity = Vector2.zero;
-        }
-    }
-
-
     public void ShootingRight()
     {
         GameObject bullet1 = Instantiate(bulletPrefab, firePointLeft.position, firePointLeft.rotation);
@@ -80,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
         Rigidbody2D rbb = bullet2.GetComponent<Rigidbody2D>();
         rbb.AddForce(firePointLeft.up * bulletForce, ForceMode2D.Impulse);
 
-        
+
     }
 
     public void ShootingUp()
@@ -88,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
         GameObject bullet3 = Instantiate(bulletPrefab, firePointUp.position, firePointUp.rotation);
         Rigidbody2D rbb = bullet3.GetComponent<Rigidbody2D>();
         rbb.AddForce(firePointUp.up * bulletForce, ForceMode2D.Impulse);
-       
+
     }
 
     public void ShootingDown()
@@ -97,69 +88,21 @@ public class PlayerMovement : MonoBehaviour
         Rigidbody2D rbb = bullet4.GetComponent<Rigidbody2D>();
         rbb.AddForce(firePointDown.up * bulletForce, ForceMode2D.Impulse);
         Debug.Log(bulletForce);
-        
-    }
-
-    public void shootingEye()
-    {
-
-        if (isshooting)
-        {
-            if (Input.GetKeyDown("d"))
-            {
-                render.sprite = sprites[0];
-
-            }
-            else if (Input.GetKeyDown("q"))
-            {
-                render.sprite = sprites[1];
-
-            }
-            else if (Input.GetKeyDown("z"))
-            {
-                render.sprite = sprites[2];
-
-            }
-            else if (Input.GetKeyDown("s"))
-            {
-                render.sprite = sprites[3];
-
-            }
-        }
-        else if (!isshooting)
-        {
-            if (horizontal > 0)
-            {
-                // GetComponent<Animator>().Play("Right");
-                render.sprite = sprites[0];
-            }
-            else if (horizontal < 0)
-            {
-                // GetComponent<Animator>().Play("Left");
-                render.sprite = sprites[1];
-                turnedLeft = true;
-            }
-            else if (vertical > 0)
-            {
-                // GetComponent<Animator>().Play("Up");
-                render.sprite = sprites[2];
-            }
-            else if (vertical < 0)
-            {
-                render.sprite = sprites[3];
-                // GetComponent<Animator>().Play("Down");
-            }
-        }
-
-
 
     }
+
+
 
     public void shootOrNot()
     {
 
-        if (Input.GetKeyDown("d") && !isshooting)
-        {
+        horizontal = target.position.x - transform.position.x;
+        vertical = target.position.y - transform.position.y;
+
+        if (horizontal > 0 && Mathf.Abs(vertical) < Mathf.Abs(horizontal) && !isshooting)
+        { // GetComponent<Animator>().Play("Right");
+            render.sprite = sprites[0];
+
             isshooting = true;
             GameObject bullet = Instantiate(bulletPrefab, firePointRight.position, firePointRight.rotation);
             if (bullet.GetComponent<Bullet>() != null)
@@ -169,10 +112,12 @@ public class PlayerMovement : MonoBehaviour
             }
             Rigidbody2D rbb = bullet.GetComponent<Rigidbody2D>();
             rbb.AddForce(firePointRight.up * bulletForce, ForceMode2D.Impulse);
-            StartCoroutine(ShootingTime());
+            StartCoroutine(ShootingTimeM());
         }
-        else if (Input.GetKeyDown("q") && !isshooting)
-        {
+        else if (horizontal < 0 && Mathf.Abs(vertical) < Mathf.Abs(horizontal) && !isshooting)
+        { // GetComponent<Animator>().Play("Left");
+            render.sprite = sprites[1];
+
             isshooting = true;
             GameObject bullet = Instantiate(bulletPrefab, firePointLeft.position, firePointLeft.rotation);
 
@@ -183,10 +128,13 @@ public class PlayerMovement : MonoBehaviour
             }
             Rigidbody2D rbb = bullet.GetComponent<Rigidbody2D>();
             rbb.AddForce(firePointLeft.up * bulletForce, ForceMode2D.Impulse);
-            StartCoroutine(ShootingTime());
+            StartCoroutine(ShootingTimeM());
         }
-        else if (Input.GetKeyDown("s") && !isshooting)
+        else if (vertical > 0 && Mathf.Abs(horizontal) < Mathf.Abs(vertical) && !isshooting)
         {
+            // GetComponent<Animator>().Play("Up");
+            render.sprite = sprites[2];
+
             isshooting = true;
             GameObject bullet = Instantiate(bulletPrefab, firePointDown.position, firePointDown.rotation);
             if (bullet.GetComponent<Bullet>() != null)
@@ -196,10 +144,12 @@ public class PlayerMovement : MonoBehaviour
             }
             Rigidbody2D rbb = bullet.GetComponent<Rigidbody2D>();
             rbb.AddForce(firePointDown.up * bulletForce, ForceMode2D.Impulse);
-            StartCoroutine(ShootingTime());
+            StartCoroutine(ShootingTimeM());
         }
-        else if (Input.GetKeyDown("z") && !isshooting)
+        else if (vertical < 0 && Mathf.Abs(horizontal) < Mathf.Abs(vertical) && !isshooting)
         {
+            render.sprite = sprites[3];
+            // GetComponent<Animator>().Play("Down");
             isshooting = true;
             GameObject bullet = Instantiate(bulletPrefab, firePointUp.position, firePointUp.rotation);
             if (bullet.GetComponent<Bullet>() != null)
@@ -209,22 +159,21 @@ public class PlayerMovement : MonoBehaviour
             }
             Rigidbody2D rbb = bullet.GetComponent<Rigidbody2D>();
             rbb.AddForce(firePointUp.up * bulletForce, ForceMode2D.Impulse);
-            StartCoroutine(ShootingTime());
+            StartCoroutine(ShootingTimeM());
         }
 
     }
 
-    private IEnumerator ShootingTime()
+    private IEnumerator ShootingTimeM()
     {
-      
-                yield return atkDelaiDuration;
-              
-                    isshooting = false;
-               
-            
 
-           
-        
+        yield return atkDelaiDuration;
+
+        isshooting = false;
+
+
+
+
+
     }
 }
-

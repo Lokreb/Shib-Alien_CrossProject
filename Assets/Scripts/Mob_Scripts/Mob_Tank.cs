@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mob_base : EnemyScript
+public class Mob_Tank : EnemyScript
 {
     public float horizontal;
     public float vertical;
@@ -13,20 +13,21 @@ public class Mob_base : EnemyScript
     // Start is called before the first frame update
     private void Start()
     {
+        base.Start();
 
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         int rnd = Random.Range(0, sprites.Length);
         GetComponent<SpriteRenderer>().sprite = sprites[rnd];
-        target = GameObject.Find("Player").transform;
+        target = GameObject.FindGameObjectsWithTag("Player")[0].transform;
         Debug.Log(target.name);
         setspeed(1f);
-        setHealth(2f);
+        setHealth(10f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        IaMob();
+       // IaMob();
 
         horizontal = target.position.x - transform.position.x;
         vertical = target.position.y - transform.position.y;

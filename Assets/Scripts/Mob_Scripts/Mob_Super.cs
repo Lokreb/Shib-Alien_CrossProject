@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestBase : EnemyScript2
+public class Mob_Super : EnemyScript
 {
     public float horizontal;
     public float vertical;
@@ -18,14 +18,15 @@ public class TestBase : EnemyScript2
         GetComponent<SpriteRenderer>().sprite = sprites[rnd];
         target = GameObject.Find("Player").transform;
         Debug.Log(target.name);
-        setspeed2(1f);
-        setHealth2(2f);
+        setspeed(1f);
+        setHealth(2f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(health);
+       // IaMob();
+
         horizontal = target.position.x - transform.position.x;
         vertical = target.position.y - transform.position.y;
 
@@ -53,5 +54,22 @@ public class TestBase : EnemyScript2
             // GetComponent<Animator>().Play("Down");
         }
        
+    }
+   override protected void IaMob()
+    {
+        range = Vector2.Distance(transform.position, target.position);
+        if (range < minDistance && !isDead)
+        {
+            if (!targetCollision)
+            {
+                // Get the position of the player
+                transform.LookAt(target.position);
+
+                // Correct the rotation
+                transform.Rotate(new Vector3(0, -90, 0), Space.Self);
+                transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0));
+            }
+        }
+        transform.rotation = Quaternion.identity;
     }
 }
