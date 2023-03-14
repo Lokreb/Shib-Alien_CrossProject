@@ -113,14 +113,13 @@ public class JSONReader : MonoBehaviour
         monstreListe.monstres = JsonConvert.DeserializeObject<List<Monstres>>(monstreData.text);
         bossListe.boss = JsonConvert.DeserializeObject<List<Boss>>(bossData.text);
         bonusListe.bonus = JsonConvert.DeserializeObject<List<Bonus>>(bonusData.text);
-        //Debug.Log(bonusListe.bonus[1].nom);
     }
 
     public Bonus GetRandomBonus()
-{
-    // Get a random bonus from the bonusListe
-    int randomIndex = Random.Range(0, bonusListe.bonus.Count);
-    return bonusListe.bonus[randomIndex];
-}
+    {
+        // Get a random bonus from the bonusListe
+        int randomIndex = Random.Range(0, bonusListe.bonus.Count);
+        return bonusListe.bonus[randomIndex];
+    }
 
 }

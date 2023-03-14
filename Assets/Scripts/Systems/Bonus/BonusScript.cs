@@ -10,8 +10,9 @@ public class BonusScript : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            Debug.Log($"Player picked up {bonusName} bonus!");
-            Destroy(gameObject);
+            JSONReader.Bonus bonus = JSONReader.Instance.GetRandomBonus(); // get a random bonus
+            Debug.Log($"Player picked up {bonus.nom} bonus!"); // log the value of the bonus
+            Destroy(gameObject); // destroy the bonus object
         }
     }
 }
