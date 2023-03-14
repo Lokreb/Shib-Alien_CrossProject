@@ -5,6 +5,23 @@ using Newtonsoft.Json;
 
 public class JSONReader : MonoBehaviour
 {
+
+    public static JSONReader Instance;
+
+    
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     [System.Serializable]
     public class Player
     {
@@ -96,11 +113,14 @@ public class JSONReader : MonoBehaviour
         monstreListe.monstres = JsonConvert.DeserializeObject<List<Monstres>>(monstreData.text);
         bossListe.boss = JsonConvert.DeserializeObject<List<Boss>>(bossData.text);
         bonusListe.bonus = JsonConvert.DeserializeObject<List<Bonus>>(bonusData.text);
+        //Debug.Log(bonusListe.bonus[1].nom);
     }
 
     public Bonus GetRandomBonus()
-    {
-        int index = Random.Range(0, bonusListe.bonus.Count);
-        return bonusListe.bonus[index];
-    }
+{
+    // Get a random bonus from the bonusListe
+    int randomIndex = Random.Range(0, bonusListe.bonus.Count);
+    return bonusListe.bonus[randomIndex];
+}
+
 }
