@@ -23,12 +23,18 @@ public class GameManager : MonoBehaviour
     public bool BossEnd = false;
     public bool isIn = false;
     public bool bossStart = false;
+    public GameObject[] fairy;
+    public SoundManager SM;
+    public AudioSource AS;
    
 
     private Scene scene;
 
     void Start()
     {
+       // AS.clip = SM.l_bgms[0].clip;
+        SM.PlayBGM(BgmType.BGM1);
+
         timerTextObject.SetActive(false);
     }
 
@@ -100,10 +106,13 @@ public class GameManager : MonoBehaviour
         
         Debug.Log(timeRemaining);
         // Update the text of the UI element to display the remaining time in seconds
+        
         timerText.text = $"{Mathf.CeilToInt(timeRemaining)}";
         timeRemaining -= Time.deltaTime;
         UpdateTimerDisplay();
         timerTextObject.SetActive(true);
+        fairy[0].SetActive(false);
+        fairy[1].SetActive(true);
         //timeRemaining -= Time.deltaTime;
         isIn = true;
 
@@ -119,6 +128,8 @@ public class GameManager : MonoBehaviour
             timerTextObject.SetActive(false);
             RandomRoom.timerBoss = false;
             BossEnd = true;
+            fairy[1].SetActive(false);
+            fairy[0].SetActive(true);
             return;
         }
     }
