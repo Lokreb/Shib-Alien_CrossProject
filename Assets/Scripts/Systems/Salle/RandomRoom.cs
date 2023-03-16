@@ -11,6 +11,8 @@ public class RandomRoom : MonoBehaviour
         public List<GameObject> RoomList;
     }
     [SerializeField] List<ListWarperRoom> Floor_List;
+
+    [System.Serializable]
     public class ListWarperBoss
 
     {
@@ -32,7 +34,10 @@ public class RandomRoom : MonoBehaviour
     {
         range = Floor_List[actual_floor].RoomList.Count;
         randomIndex = Random.Range(0, range);
-        SelectARoom();
+        range = Boss_List[actual_floor].BossRoomList.Count;
+        randomIndex = Random.Range(0, range);
+        // SelectARoom();
+        SelectBoss();
 
 
     } 
@@ -54,7 +59,7 @@ public class RandomRoom : MonoBehaviour
         {
             GoBoss = true;
         }
-        Debug.Log("AstarPath il passe");
+        Debug.Log("Le scan se fait!");
         AstarPath.active.Scan();
 
 

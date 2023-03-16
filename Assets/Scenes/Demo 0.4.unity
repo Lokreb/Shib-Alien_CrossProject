@@ -5518,7 +5518,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 554989926170490474, guid: 16449cf3167f7d64bac125b2b5418d7d, type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 554989926170490474, guid: 16449cf3167f7d64bac125b2b5418d7d, type: 3}
       propertyPath: m_ColliderPaths.Array.size
@@ -14175,7 +14175,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1186755265
 BoxCollider2D:
@@ -17731,7 +17731,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1362358689426803285, guid: 24a8775f80092fc4c830bd81723846ce, type: 3}
       propertyPath: m_ColliderPaths.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1362358689426803285, guid: 24a8775f80092fc4c830bd81723846ce, type: 3}
       propertyPath: m_CompositePaths.m_Paths.Array.size
@@ -20771,7 +20771,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1362358691243958502, guid: 24a8775f80092fc4c830bd81723846ce, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1362358691243958505, guid: 24a8775f80092fc4c830bd81723846ce, type: 3}
       propertyPath: m_RootOrder
@@ -21088,7 +21088,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1473165121}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 50cdfcddc417c7b4bb498c8d166fffef, type: 3}
   m_Name: 
@@ -21139,6 +21139,13 @@ MonoBehaviour:
     - {fileID: 472067582}
     - {fileID: 1356280554}
     - {fileID: 2021735943}
+  Boss_List:
+  - BossRoomList:
+    - {fileID: 1707153971}
+  - BossRoomList: []
+  - BossRoomList: []
+  - BossRoomList: []
+  - BossRoomList: []
   Floor_number: 5
 --- !u!1 &1483336577
 GameObject:
@@ -27999,6 +28006,11 @@ GameObject:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1430758528680149402, guid: 11cbfaae86446ba47855aa8683e9e1bc, type: 3}
   m_PrefabInstance: {fileID: 421526426}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1707153971 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1362358691243958502, guid: 24a8775f80092fc4c830bd81723846ce, type: 3}
+  m_PrefabInstance: {fileID: 1386424332}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1730809395
 PrefabInstance:
@@ -38057,7 +38069,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8272677751452401035, guid: 0463a6a184d69634a8255104bfe3c1a3, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8272677751452401035, guid: 0463a6a184d69634a8255104bfe3c1a3, type: 3}
       propertyPath: m_LocalScale.x

@@ -30,11 +30,11 @@ public class Bullet_mob : MonoBehaviour
         //Destroy(effect, 5f);
         if (collision.gameObject.tag != "Bullet" && collision.gameObject.tag == "Player" && collision.gameObject.tag != "Mob")
         {
-            if (collision.gameObject.GetComponent<PlayerScript>() != null)
-            {
-                collision.gameObject.GetComponent<PlayerScript>().getHited();
+           
+                Debug.Log("pattepatte22222222222222");
+                collision.gameObject.GetComponent<player_colision>().getHited();
                 Destroy(gameObject);
-            }
+            
         }
         else if (collision.gameObject.tag == "Wall")
         {
@@ -49,7 +49,6 @@ public class Bullet_mob : MonoBehaviour
     {
         
         yield return Range;
-        Debug.Log("pushhhhhhh");
         Destroy(gameObject);
 
 

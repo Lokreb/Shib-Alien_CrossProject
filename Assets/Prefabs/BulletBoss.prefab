@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 4752549558289107246}
   - component: {fileID: 4424484545956515887}
   - component: {fileID: 6494764955532689270}
-  - component: {fileID: 7520294102642172279}
+  - component: {fileID: 3119377871974810440}
   m_Layer: 0
-  m_Name: Bullet Mob
+  m_Name: BulletBoss
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 7905685127634981526}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2.97, y: 2.97, z: 2.97}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -121,8 +121,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Dmg: 1
-  lifetime: 2
---- !u!58 &7520294102642172279
+  lifetime: 4
+--- !u!58 &3119377871974810440
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

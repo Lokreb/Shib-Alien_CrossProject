@@ -6,7 +6,7 @@ public class player_colision : MonoBehaviour
 {
     public GameManager GM;
    [SerializeField] PlayerMovement pm;
-    public int LifePoint = 10;
+    public int LifePoint = 3;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,12 +29,25 @@ public class player_colision : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Mob"))
         {
-            LifePoint = LifePoint - 1;
+            getHited();
         }
     }
 
     public void dead()
     {
         pm.IsAlive = false;
+    }
+    public void checklife()
+    {
+        if (LifePoint < 1)
+        {
+            dead();
+
+
+        }
+    }
+    public void getHited()
+    {
+        LifePoint = LifePoint - 1;
     }
 }
