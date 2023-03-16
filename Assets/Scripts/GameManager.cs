@@ -11,8 +11,10 @@ public class GameManager : MonoBehaviour
     public GameObject hudCanvas;
     public GameObject NS;
     public GameObject BlackScreen;
+    public GameObject BlackEndScreen;
     public GameObject Replay;
     public bool clear;
+    public bool BossEnd = false;
    
 
     private Scene scene;
@@ -28,6 +30,11 @@ public class GameManager : MonoBehaviour
         {
             clear = true;
             NS.SetActive(true);
+        }
+
+        if (BossEnd == true)
+        {
+            GameEnd();
         }
     }
 
@@ -53,6 +60,11 @@ public class GameManager : MonoBehaviour
     {
         BlackScreen.SetActive(true);
         Replay.SetActive(true);
+    }
+    public void GameEnd()
+    {
+        BlackEndScreen.SetActive(true);
+       // Replay.SetActive(true);
     }
 
     public void reloadGame()
