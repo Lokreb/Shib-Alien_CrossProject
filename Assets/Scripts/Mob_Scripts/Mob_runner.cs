@@ -5,7 +5,9 @@ using UnityEngine;
 public class Mob_runner : EnemyScript
 {
 
-    
+    public float horizontal;
+    public float vertical;
+    public bool turnedLeft = false;
     float initialspeed = 0;
     float maxspeed = 0;
     public float acceleration = 1f;
@@ -14,8 +16,8 @@ public class Mob_runner : EnemyScript
     public float accelerationIntervalRange = 5f;
     public float accelerationDurationRange = 5f;
     public float stopDurationRange = 1f;
-    private bool isAccelerating = false; // détermine si le monstre est déjà en train d'accélérer
-    private WaitForSeconds accelerationWait; // l'objet Wait pour attendre l'intervalle de temps entre chaque accélération
+    private bool isAccelerating = false; // dï¿½termine si le monstre est dï¿½jï¿½ en train d'accï¿½lï¿½rer
+    private WaitForSeconds accelerationWait; // l'objet Wait pour attendre l'intervalle de temps entre chaque accï¿½lï¿½ration
     private WaitForSeconds accelerationDuration;
     private WaitForSeconds stopDuration;
 
@@ -44,7 +46,35 @@ public class Mob_runner : EnemyScript
     // Update is called once per frame
     void Update()
     {
-       // IaMob();
+       IaMob();
+
+        horizontal = target.position.x - transform.position.x;
+        vertical = target.position.y - transform.position.y;
+
+        turnedLeft = false;
+        if (horizontal > 0 && Mathf.Abs(vertical)< Mathf.Abs(horizontal))
+        {
+            GetComponent<Animator>().Play("LoupCourseDroite");
+            //render.sprite = sprites[0];
+
+        }
+        else if (horizontal < 0 && Mathf.Abs(vertical) < Mathf.Abs(horizontal))
+        {
+            GetComponent<Animator>().Play("LoupCourseGauche");
+            //render.sprite = sprites[1];
+            turnedLeft = true;
+        }
+        else if (vertical > 0 && Mathf.Abs(horizontal) < Mathf.Abs(vertical))
+        {
+            GetComponent<Animator>().Play("LoupCourseDerriere");
+            //render.sprite = sprites[2];
+        }
+        else if (vertical < 0 && Mathf.Abs(horizontal) < Mathf.Abs(vertical))
+        {
+            //render.sprite = sprites[3];
+            GetComponent<Animator>().Play("LoupCourseDevant");
+        }
+       
     }
 
     override protected void IaMob()

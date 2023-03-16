@@ -43,17 +43,17 @@ public class PlayerScript : MonoBehaviour
         turnedLeft = false;
         if (horizontal > 0)
         {
-            GetComponent<Animator>().Play("Right");
+            //GetComponent<Animator>().Play("PersoDeplacementDroite");
         } else if (horizontal < 0)
         {
-            GetComponent<Animator>().Play("Left");
+            //GetComponent<Animator>().Play("PersoDeplacementGauche");
             turnedLeft = true;
         } else if (vertical > 0)
         {
-            GetComponent<Animator>().Play("Up");
+            //GetComponent<Animator>().Play("PersoDeplacementDevant");
         } else if (vertical < 0)
         {
-            GetComponent<Animator>().Play("Down");
+            //GetComponent<Animator>().Play("PersoDeplacementDerriere");
         }
     }
 

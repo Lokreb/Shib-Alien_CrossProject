@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 8815729535839830762}
   - component: {fileID: 2307080153783974409}
   - component: {fileID: 364516736348635612}
+  - component: {fileID: 5762234209189906451}
+  - component: {fileID: -8703478128719892870}
   m_Layer: 0
   m_Name: Mob_Tank
   m_TagString: Mob
@@ -233,3 +235,46 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.109763965}
   serializedVersion: 2
   m_Radius: 0.5329462
+--- !u!111 &5762234209189906451
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3168418261069033740}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400000, guid: 006e6d38643725040b5fe1d25a058d33, type: 2}
+  - {fileID: 7400000, guid: 476827c9a0a72f642a06329dd77efb55, type: 2}
+  - {fileID: 7400000, guid: 49b02beef6d69654790da5708eb653f1, type: 2}
+  - {fileID: 7400000, guid: 1c527b40b57f39349a752fe54cd763e2, type: 2}
+  - {fileID: 7400000, guid: d5ecc11c8590c85449af04e903a078d3, type: 2}
+  - {fileID: 7400000, guid: e6eb81133555af04eb51b7d6c8350ddb, type: 2}
+  - {fileID: 7400000, guid: 797d40e738eb41748be9daca8fc67693, type: 2}
+  - {fileID: 7400000, guid: 425f1a716c6cf194fb43653ce5103d82, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!95 &-8703478128719892870
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3168418261069033740}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bb638a3fac9cb1740bd4a46a6e1dbe80, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
