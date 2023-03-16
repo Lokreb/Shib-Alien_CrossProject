@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public int i;
     public float speed = 5f;
     public bool turnedLeft = false;
     private float horizontal;
@@ -105,49 +106,58 @@ public class PlayerMovement : MonoBehaviour
 
         if (isshooting)
         {
+            GetComponent<Animator>().enabled = true;
+
             if (Input.GetKeyDown("d"))
             {
-                render.sprite = sprites[0];
+                
+                GetComponent<Animator>().Play("PersoAttaqueDroite");
 
             }
             else if (Input.GetKeyDown("q"))
             {
-                render.sprite = sprites[1];
+                
+                GetComponent<Animator>().Play("PersoAttaqueGauche");
 
             }
             else if (Input.GetKeyDown("z"))
             {
-                render.sprite = sprites[2];
+                
+                GetComponent<Animator>().Play("PersoAttaqueDerriere");
 
             }
             else if (Input.GetKeyDown("s"))
             {
-                render.sprite = sprites[3];
+                
+                GetComponent<Animator>().Play("PersoAttaqueDevant");
 
             }
+
+            
         }
         else if (!isshooting)
         {
+            GetComponent<Animator>().enabled = true;
             if (horizontal > 0)
             {
-                // GetComponent<Animator>().Play("Right");
-                render.sprite = sprites[0];
+                GetComponent<Animator>().Play("PersoDeplacementDroite");
+                //render.sprite = sprites[0];
             }
             else if (horizontal < 0)
             {
-                // GetComponent<Animator>().Play("Left");
-                render.sprite = sprites[1];
+                GetComponent<Animator>().Play("PersoDeplacementGauche");
+                //render.sprite = sprites[1];
                 turnedLeft = true;
             }
             else if (vertical > 0)
             {
-                // GetComponent<Animator>().Play("Up");
-                render.sprite = sprites[2];
+                GetComponent<Animator>().Play("PersoDeplacementDerriere");
+                //render.sprite = sprites[2];
             }
             else if (vertical < 0)
             {
-                render.sprite = sprites[3];
-                // GetComponent<Animator>().Play("Down");
+                //render.sprite = sprites[3];
+                GetComponent<Animator>().Play("PersoDeplacementDevant");
             }
         }
 
@@ -218,7 +228,7 @@ public class PlayerMovement : MonoBehaviour
     {
       
                 yield return atkDelaiDuration;
-              
+              GetComponent<Animator>().enabled = false;
                     isshooting = false;
                
             

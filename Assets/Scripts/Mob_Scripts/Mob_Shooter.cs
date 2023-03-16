@@ -50,7 +50,8 @@ public class Mob_Shooter : EnemyScript
 
     }
     public void ShootingRight()
-    {
+    {   
+        GetComponent<Animator>().Play("AttaqueSqueletteDroite");
         GameObject bullet1 = Instantiate(bulletPrefab, firePointLeft.position, firePointLeft.rotation);
         if (bullet1.GetComponent<Bullet>() != null)
         {
@@ -63,6 +64,7 @@ public class Mob_Shooter : EnemyScript
 
     public void ShootingLeft()
     {
+        GetComponent<Animator>().Play("AttaqueSqueletteGauche");
         GameObject bullet2 = Instantiate(bulletPrefab, firePointLeft.position, firePointLeft.rotation);
         if (bullet2.GetComponent<Bullet>() != null)
         {
@@ -76,6 +78,7 @@ public class Mob_Shooter : EnemyScript
 
     public void ShootingUp()
     {
+        GetComponent<Animator>().Play("AttaqueSqueletteDevant");
         GameObject bullet3 = Instantiate(bulletPrefab, firePointUp.position, firePointUp.rotation);
         Rigidbody2D rbb = bullet3.GetComponent<Rigidbody2D>();
         rbb.AddForce(firePointUp.up * bulletForce, ForceMode2D.Impulse);
@@ -84,6 +87,7 @@ public class Mob_Shooter : EnemyScript
 
     public void ShootingDown()
     {
+        GetComponent<Animator>().Play("AttaqueSqueletteDerriere");
         GameObject bullet4 = Instantiate(bulletPrefab, firePointDown.position, firePointDown.rotation);
         Rigidbody2D rbb = bullet4.GetComponent<Rigidbody2D>();
         rbb.AddForce(firePointDown.up * bulletForce, ForceMode2D.Impulse);
@@ -100,8 +104,8 @@ public class Mob_Shooter : EnemyScript
         vertical = target.position.y - transform.position.y;
 
         if (horizontal > 0 && Mathf.Abs(vertical) < Mathf.Abs(horizontal) && !isshooting)
-        { // GetComponent<Animator>().Play("Right");
-            render.sprite = sprites[0];
+        {   GetComponent<Animator>().Play("AnimSqueletteDroite");
+            //render.sprite = sprites[0];
 
             isshooting = true;
             GameObject bullet = Instantiate(bulletPrefab, firePointRight.position, firePointRight.rotation);
@@ -115,8 +119,8 @@ public class Mob_Shooter : EnemyScript
             StartCoroutine(ShootingTimeM());
         }
         else if (horizontal < 0 && Mathf.Abs(vertical) < Mathf.Abs(horizontal) && !isshooting)
-        { // GetComponent<Animator>().Play("Left");
-            render.sprite = sprites[1];
+        {   GetComponent<Animator>().Play("AnimSqueletteGauche");
+            //render.sprite = sprites[1];
 
             isshooting = true;
             GameObject bullet = Instantiate(bulletPrefab, firePointLeft.position, firePointLeft.rotation);
@@ -132,8 +136,8 @@ public class Mob_Shooter : EnemyScript
         }
         else if (vertical > 0 && Mathf.Abs(horizontal) < Mathf.Abs(vertical) && !isshooting)
         {
-            // GetComponent<Animator>().Play("Up");
-            render.sprite = sprites[2];
+            GetComponent<Animator>().Play("AnimSqueletteDerriere");
+            //render.sprite = sprites[2];
 
             isshooting = true;
             GameObject bullet = Instantiate(bulletPrefab, firePointDown.position, firePointDown.rotation);
@@ -148,8 +152,8 @@ public class Mob_Shooter : EnemyScript
         }
         else if (vertical < 0 && Mathf.Abs(horizontal) < Mathf.Abs(vertical) && !isshooting)
         {
-            render.sprite = sprites[3];
-            // GetComponent<Animator>().Play("Down");
+            //render.sprite = sprites[3];
+            GetComponent<Animator>().Play("AnimSqueletteDevant");
             isshooting = true;
             GameObject bullet = Instantiate(bulletPrefab, firePointUp.position, firePointUp.rotation);
             if (bullet.GetComponent<Bullet>() != null)
@@ -176,4 +180,6 @@ public class Mob_Shooter : EnemyScript
 
 
     }
+
+
 }

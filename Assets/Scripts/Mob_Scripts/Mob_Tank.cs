@@ -35,25 +35,25 @@ public class Mob_Tank : EnemyScript
         turnedLeft = false;
         if (horizontal > 0 && Mathf.Abs(vertical)< Mathf.Abs(horizontal))
         {
-            // GetComponent<Animator>().Play("Right");
-            render.sprite = sprites[0];
+            GetComponent<Animator>().Play("TankMarcheDroite");
+            //render.sprite = sprites[0];
 
         }
         else if (horizontal < 0 && Mathf.Abs(vertical) < Mathf.Abs(horizontal))
         {
-            // GetComponent<Animator>().Play("Left");
-            render.sprite = sprites[1];
+            GetComponent<Animator>().Play("TankMarcheGauche");
+            //render.sprite = sprites[1];
             turnedLeft = true;
         }
         else if (vertical > 0 && Mathf.Abs(horizontal) < Mathf.Abs(vertical))
         {
-            // GetComponent<Animator>().Play("Up");
-            render.sprite = sprites[2];
+            GetComponent<Animator>().Play("TankMarcheDerriere");
+            //render.sprite = sprites[2];
         }
         else if (vertical < 0 && Mathf.Abs(horizontal) < Mathf.Abs(vertical))
         {
-            render.sprite = sprites[3];
-            // GetComponent<Animator>().Play("Down");
+            //render.sprite = sprites[3];
+            GetComponent<Animator>().Play("TankMarcheDevant");
         }
        
     }
