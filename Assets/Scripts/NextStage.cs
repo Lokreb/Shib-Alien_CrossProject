@@ -35,13 +35,22 @@ public class NextStage : MonoBehaviour
 
     public void GoNext()
     {
+
        
-        
         GM.player.SetActive(false);
         SpawnerScript.AllKilled = false;
         SpawnerScript.IsFinish = false;
         GM.clear = false;
-        RR.SelectARoom();
+        if (RandomRoom.GoBoss == false)
+        {
+            RR.SelectARoom();
+
+        }
+        else if (RandomRoom.GoBoss == true)
+        {
+            RR.SelectBoss();
+        }
+        
         GM.player.SetActive(true);
         GM.ReplacePlayer();
          LoadingScreen.SetActive(false);
