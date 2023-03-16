@@ -7,6 +7,8 @@ public class player_colision : MonoBehaviour
     public GameManager GM;
    [SerializeField] PlayerMovement pm;
     public int LifePoint = 3;
+    public GameObject[] UiCoeur;
+    int it;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +24,36 @@ public class player_colision : MonoBehaviour
             GM.GameOver();
             dead();
             gameObject.SetActive(false);
+            for (it = 0; it < UiCoeur.Length; it++)
+            {
+                UiCoeur[it].SetActive(false);
+            }
+            UiCoeur[0].SetActive(true);
+        }
+
+        if(LifePoint == 1)
+        {
+            for(it = 0; it < UiCoeur.Length; it++)
+            {
+                UiCoeur[it].SetActive(false);
+            }
+            UiCoeur[1].SetActive(true);
+        }
+        else if (LifePoint == 2)
+        {
+            for (it = 0; it < UiCoeur.Length; it++)
+            {
+                UiCoeur[it].SetActive(false);
+            }
+            UiCoeur[2].SetActive(true);
+        }
+        if (LifePoint == 3)
+        {
+            for (it = 0; it < UiCoeur.Length; it++)
+            {
+                UiCoeur[it].SetActive(false);
+            }
+            UiCoeur[3].SetActive(true);
         }
     }
 
