@@ -17731,7 +17731,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1362358689426803285, guid: 24a8775f80092fc4c830bd81723846ce, type: 3}
       propertyPath: m_ColliderPaths.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1362358689426803285, guid: 24a8775f80092fc4c830bd81723846ce, type: 3}
       propertyPath: m_CompositePaths.m_Paths.Array.size
@@ -20771,7 +20771,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1362358691243958502, guid: 24a8775f80092fc4c830bd81723846ce, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1362358691243958505, guid: 24a8775f80092fc4c830bd81723846ce, type: 3}
       propertyPath: m_RootOrder
@@ -21088,7 +21088,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1473165121}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 50cdfcddc417c7b4bb498c8d166fffef, type: 3}
   m_Name: 
