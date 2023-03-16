@@ -4,12 +4,69 @@ using UnityEngine;
 
 public class BonusScript : MonoBehaviour
 {
-    public string bonusName;
+    public Sprite speedBonusSprite;
+    public Sprite atkSpeedBonusSprite;
+    public Sprite projSpeedBonusSprite;
+    public Sprite damageBonusSprite;
+    public Sprite projectileBonusSprite;
+    public Sprite patternBonusSprite;
+    public Sprite rebondBonusSprite;
+    public Sprite laserBonusSprite;
+    public Sprite mineBonusSprite;
+
+    private JSONReader.Bonus bonus;
+    private SpriteRenderer spriteRenderer;
+
+    private void Awake()
+    {
+        // Get a random bonus from the JSONReader
+        bonus = JSONReader.Instance.GetRandomBonus();
+
+        // Get the sprite renderer component
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    private void Start()
+    {
+        switch (bonus.nom)
+        {
+            case "speed":
+                spriteRenderer.sprite = speedBonusSprite;
+                break;
+            case "atkspeed":
+                spriteRenderer.sprite = atkSpeedBonusSprite;
+                break;
+            case "projectilespeed":
+                spriteRenderer.sprite = projSpeedBonusSprite;
+                break;
+            case "damage":
+                spriteRenderer.sprite = damageBonusSprite;
+                break;
+            case "projectile":
+                spriteRenderer.sprite = projectileBonusSprite;
+                break;
+            case "pattern":
+                spriteRenderer.sprite = patternBonusSprite;
+                break;
+            case "rebond":
+                spriteRenderer.sprite = rebondBonusSprite;
+                break;
+            case "laser":
+                spriteRenderer.sprite = laserBonusSprite;
+                break;
+            case "mines":
+                spriteRenderer.sprite = mineBonusSprite;
+                break;
+            default:
+                Debug.LogWarning($"Unknown bonus name: {bonus.nom}");
+                break;
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            JSONReader.Bonus bonus = JSONReader.Instance.GetRandomBonus(); // get a random bonus
             Debug.Log($"Player picked up {bonus.nom} bonus!"); // log the value of the bonus
 
             switch (bonus.nom)
@@ -43,6 +100,9 @@ public class BonusScript : MonoBehaviour
                     JSONReader.Instance.joueur.rebond += bonus.valeur;
                     Debug.Log("I am rebond!");
                     Debug.Log(JSONReader.Instance.joueur.rebond);
+                    break;
+                case "pattern":
+                    Debug.Log("Change shoot!");
                     break;
                 case "laser":
                     Debug.Log("Lasabeamu!");
