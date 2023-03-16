@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4238756998013686676}
   - component: {fileID: 426431836504440259}
   - component: {fileID: 5276990461799725006}
-  - component: {fileID: 2456488808378537293}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -112,35 +111,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &2456488808378537293
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3387041701356065547}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b4fd64ce155dd0459d9054898472984, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player:
-    nom: 
-    pv: 0
-    degats: 0
-    atkspeed: 0
-    projectilespeed: 0
-    speed: 0
-    projectile: 0
-    pattern: []
-    rebond: 0
-    image: 
-  bonus:
-    nom: 
-    type: 0
-    id: 0
-    increase: 0
-    valeur: 0
-    degats: 0
-    cooldown: 0
-    image: 
