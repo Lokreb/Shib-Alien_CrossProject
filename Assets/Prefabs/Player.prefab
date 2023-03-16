@@ -275,7 +275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2d6c61b86b554b44b8c2fdd358dcd97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 5
   turnedLeft: 0
   render: {fileID: 8272677751452401034}
   IsAlive: 1
