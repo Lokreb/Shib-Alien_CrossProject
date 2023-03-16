@@ -7,7 +7,7 @@ public class Bonus
     public int id;
     public float increase;
     public int valeur;
-    public int degats;
+    public int damage;
     public float cooldown;
     public string image;
 }

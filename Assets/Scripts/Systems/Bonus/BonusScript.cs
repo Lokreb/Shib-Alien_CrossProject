@@ -4,51 +4,57 @@ using UnityEngine;
 
 public class BonusScript : MonoBehaviour
 {
-    public JSONReader.Player player; // Reference to the player's stats
-    public JSONReader.Bonus bonus; // Reference to the bonus data
-
+    public string bonusName;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            // Apply the bonus effects to the player
+            JSONReader.Bonus bonus = JSONReader.Instance.GetRandomBonus(); // get a random bonus
+            Debug.Log($"Player picked up {bonus.nom} bonus!"); // log the value of the bonus
+
             switch (bonus.nom)
             {
+                case "speed":
+                    JSONReader.Instance.joueur.speed += bonus.increase;
+                    Debug.Log("I am speed!");
+                    Debug.Log(JSONReader.Instance.joueur.speed);
+                    break;
                 case "atkspeed":
-                    player.atkspeed += bonus.increase;
+                    JSONReader.Instance.joueur.atkspeed += bonus.increase;
+                    Debug.Log("I am atkspeed!");
+                    Debug.Log(JSONReader.Instance.joueur.atkspeed);
                     break;
                 case "projectilespeed":
-                    player.projectilespeed += bonus.increase;
+                    JSONReader.Instance.joueur.projectilespeed += bonus.increase;
+                    Debug.Log("I am projspeed!");
+                    Debug.Log(JSONReader.Instance.joueur.projectilespeed);
                     break;
-                case "speed":
-                    player.speed += bonus.increase;
+                case "degats":
+                    JSONReader.Instance.joueur.damage += bonus.valeur;
+                    Debug.Log("I am dmg!");
+                    Debug.Log(JSONReader.Instance.joueur.damage);
                     break;
                 case "projectile":
-                    player.projectile += bonus.valeur;
-                    break;
-                case "pattern":
-                    player.pattern.Add("new pattern"); // add the new pattern
-                    break;
-                    case "damage":
-                    player.degats += bonus.valeur;
+                    JSONReader.Instance.joueur.projectile += bonus.valeur;
+                    Debug.Log("I am proj!");
+                    Debug.Log(JSONReader.Instance.joueur.projectile);
                     break;
                 case "rebond":
-                    player.rebond += bonus.valeur;
+                    JSONReader.Instance.joueur.rebond += bonus.valeur;
+                    Debug.Log("I am rebond!");
+                    Debug.Log(JSONReader.Instance.joueur.rebond);
                     break;
-                    case "laser":
-                    // Add new laser to player's inventory
-                    //player.AddBonusWeapon(new LaserWeapon(bonus[8].degats, bonus[8].cooldown));
+                case "laser":
+                    Debug.Log("Lasabeamu!");
                     break;
                 case "mines":
-                    // Add new mines to player's inventory
-                    //player.AddBonusWeapon(new MineWeapon(bonus[9].degats, bonus[9].cooldown));
+                    Debug.Log("Flashback from 39-45!");
                     break;
                 default:
+                    Debug.LogWarning($"Unknown bonus name: {bonus.nom}");
                     break;
             }
-
-            // Remove the bonus object from the game
-            Destroy(gameObject);
+            Destroy(gameObject); // destroy the bonus object
         }
     }
 }

@@ -10,24 +10,24 @@ public class JSONReader : MonoBehaviour
 
     
     void Awake()
+{
+    if (Instance == null)
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
+    else if (Instance != this)
+    {
+        Destroy(gameObject);
+    }
+}
 
     [System.Serializable]
     public class Player
     {
         public string nom;
         public int pv;
-        public int degats;
+        public int damage;
         public float atkspeed;
         public float projectilespeed;
         public float speed;
@@ -122,4 +122,8 @@ public class JSONReader : MonoBehaviour
         return bonusListe.bonus[randomIndex];
     }
 
+    public Player GetStats() {
+        // Returns Player stats
+        return joueur;
+    }
 }
