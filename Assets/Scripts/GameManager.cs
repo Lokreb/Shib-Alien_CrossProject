@@ -24,12 +24,17 @@ public class GameManager : MonoBehaviour
     public bool isIn = false;
     public bool bossStart = false;
     public GameObject[] fairy;
+    public SoundManager SM;
+    public AudioSource AS;
    
 
     private Scene scene;
 
     void Start()
     {
+       // AS.clip = SM.l_bgms[0].clip;
+        SM.PlayBGM(BgmType.BGM1);
+
         timerTextObject.SetActive(false);
     }
 
