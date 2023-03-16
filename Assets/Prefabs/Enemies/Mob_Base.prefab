@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 2157809565922295438}
   - component: {fileID: 1614417162625620056}
   - component: {fileID: -7162965219473121716}
+  - component: {fileID: 2650665877094253081}
+  - component: {fileID: 3917602987399789860}
   m_Layer: 0
   m_Name: Mob_Base
   m_TagString: Mob
@@ -156,3 +158,42 @@ MonoBehaviour:
   vertical: 0
   render: {fileID: 3168418261069033743}
   turnedLeft: 0
+--- !u!111 &2650665877094253081
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3168418261069033740}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400000, guid: 3e5c384f216f921499a661cbe9691cd0, type: 2}
+  - {fileID: 7400000, guid: 446476aff783dd440bfdc83562e09715, type: 2}
+  - {fileID: 7400000, guid: da25f1dd22d16d0458a9cbc398015c61, type: 2}
+  - {fileID: 7400000, guid: 112ce689738505443b94f33f750c6755, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!95 &3917602987399789860
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3168418261069033740}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: baf3841a4ac5db941814e22cb4cee202, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

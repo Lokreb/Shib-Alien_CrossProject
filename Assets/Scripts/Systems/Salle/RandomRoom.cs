@@ -27,6 +27,7 @@ public class RandomRoom : MonoBehaviour
     GameObject resetPrefab = null;
      int iteration = 0;
     static public bool GoBoss =false;
+    static public bool timerBoss = false;
 
 
 
@@ -34,10 +35,9 @@ public class RandomRoom : MonoBehaviour
     {
         range = Floor_List[actual_floor].RoomList.Count;
         randomIndex = Random.Range(0, range);
-        range = Boss_List[actual_floor].BossRoomList.Count;
-        randomIndex = Random.Range(0, range);
-        // SelectARoom();
-        SelectBoss();
+
+        SelectARoom();
+        //SelectBoss();
 
 
     } 
@@ -55,7 +55,7 @@ public class RandomRoom : MonoBehaviour
             resetPrefab = randomPrefab;
             Floor_List[actual_floor].RoomList.RemoveAt(randomIndex);
         iteration++;
-        if (iteration >= 3)
+        if (iteration >= 1)
         {
             GoBoss = true;
         }
@@ -82,8 +82,7 @@ public class RandomRoom : MonoBehaviour
         iteration = 0;
         actual_floor++;
         GoBoss = false;
-        
-
+        timerBoss = true;
     }
 
    

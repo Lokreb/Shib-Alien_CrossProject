@@ -47,6 +47,8 @@ GameObject:
   - component: {fileID: -5608074882141906960}
   - component: {fileID: -1683138878153082236}
   - component: {fileID: 2247779953370994687}
+  - component: {fileID: 7474416228703782021}
+  - component: {fileID: -4323612892731270053}
   m_Layer: 0
   m_Name: Mob_Shoot
   m_TagString: Mob
@@ -277,6 +279,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   target: {fileID: 0}
+--- !u!95 &7474416228703782021
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3168418261069033740}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b98348cac9eb0184eb1590beae6062c0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!111 &-4323612892731270053
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3168418261069033740}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400000, guid: a813da0d9e5e5544d9ab5a8c5a7fce24, type: 2}
+  - {fileID: 7400000, guid: 8d60781c56a6fad4d92301fe2a113b20, type: 2}
+  - {fileID: 7400000, guid: 66cb506c73a30184492ce1d55a5bdd92, type: 2}
+  - {fileID: 7400000, guid: 59e950a98c02fd04fa78ebbfcc1e6a13, type: 2}
+  - {fileID: 7400000, guid: 2da2159444829ae41b67c9e691eb4b7d, type: 2}
+  - {fileID: 7400000, guid: 5a1d9dab698d1a340889cd812b51df82, type: 2}
+  - {fileID: 7400000, guid: 8326a1d15738f6f4584cf46b938aa03d, type: 2}
+  - {fileID: 7400000, guid: 0c4e5cad4747370449b703b662f5c3af, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &6263866231154516058
 GameObject:
   m_ObjectHideFlags: 0

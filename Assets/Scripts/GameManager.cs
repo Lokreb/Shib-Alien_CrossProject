@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,30 +15,45 @@ public class GameManager : MonoBehaviour
     public GameObject BlackScreen;
     public GameObject BlackEndScreen;
     public GameObject Replay;
+    public float fightDuration = 45f;
+    private float timeRemaining= 1f;
+    public TMP_Text timerText;
+    public GameObject timerTextObject;
     public bool clear;
     public bool BossEnd = false;
+    public bool isIn = false;
+    public bool bossStart = false;
    
 
     private Scene scene;
 
     void Start()
     {
+        timerTextObject.SetActive(false);
     }
 
     private void Update()
     {
-        
-        if( SpawnerScript.AllKilled == true && SpawnerScript.IsFinish == true)
+        if ( SpawnerScript.AllKilled == true && SpawnerScript.IsFinish == true)
         {
             clear = true;
             NS.SetActive(true);
         }
+        //Debug.Log(RandomRoom.timerBoss);
 
-        if (BossEnd == true)
+
+        if (RandomRoom.timerBoss == true)
         {
+            BossMode();
+        }
+
+        // Check if the fight is over
+        if (timeRemaining == 0f && BossEnd == true)
+        {   
             GameEnd();
         }
     }
+
 
     void Awake()
     {
@@ -51,7 +68,7 @@ public class GameManager : MonoBehaviour
 
      
 
- public void ReplacePlayer()
+    public void ReplacePlayer()
     {
         player.transform.position = spwan.transform.position;
     }
@@ -74,7 +91,35 @@ public class GameManager : MonoBehaviour
 
     public void BossMode()
     {
+        // Start the timer
+        if(bossStart == false)
+        {
+            timeRemaining = fightDuration;
+            bossStart = true;
+        }
+        
+        Debug.Log(timeRemaining);
+        // Update the text of the UI element to display the remaining time in seconds
+        timerText.text = $"{Mathf.CeilToInt(timeRemaining)}";
+        timeRemaining -= Time.deltaTime;
+        UpdateTimerDisplay();
+        timerTextObject.SetActive(true);
+        //timeRemaining -= Time.deltaTime;
+        isIn = true;
 
     }
-  
+
+    private void UpdateTimerDisplay()
+    {
+        if (timeRemaining <= 0f)
+        {
+            // Stop the timer
+            timeRemaining = 0f;
+            timerText.text = "0";
+            timerTextObject.SetActive(false);
+            RandomRoom.timerBoss = false;
+            BossEnd = true;
+            return;
+        }
+    }
 }
