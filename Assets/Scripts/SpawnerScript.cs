@@ -106,16 +106,20 @@ public class SpawnerScript : MonoBehaviour
                 
             
         }
-        */
+        
         if (actualWave == MaxWaves)
         { 
             IsFinish = true;
-
-            if (Actual_Mob == 0)
+        */
+        if (Actual_Mob == 0)
             {
                 AllKilled = true;
             }
+        else if (Actual_Mob != 0)
+        {
+            AllKilled = false;
         }
+      //  }
         
     }
 
@@ -153,6 +157,7 @@ public class SpawnerScript : MonoBehaviour
                 yield return waveWait;
             }
         }
+        IsFinish = true;
     }
 
 
