@@ -55,7 +55,7 @@ public class RandomRoom : MonoBehaviour
             resetPrefab = randomPrefab;
             Floor_List[actual_floor].RoomList.RemoveAt(randomIndex);
         iteration++;
-        if (iteration >= 1)
+        if (iteration >= 3)
         {
             GoBoss = true;
         }
