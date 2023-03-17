@@ -14,6 +14,7 @@ abstract public class EnemyScript : MonoBehaviour
     protected int hitStrength = 10;
     protected float thrust = 1.5f;
     AIDestinationSetter AiDesti;
+    public RandomRoom RR;
 
     public Sprite[] sprites;
 
@@ -23,6 +24,7 @@ abstract public class EnemyScript : MonoBehaviour
     
      protected void Start()
     {
+      
         AiDesti = GetComponent<AIDestinationSetter>();
         AiDesti.target = GameObject.FindGameObjectsWithTag("Player")[0].transform;
         
@@ -70,7 +72,8 @@ abstract public class EnemyScript : MonoBehaviour
         if(health <= 0)
         {
              isDead = true;
-             SpawnerScript.actualise_mob();
+        
+            SpawnerScript.actualise_mob();
             // GetComponent<Rigidbody2D>().velocity = Vector3.zero;
             
             // GetComponent<SpriteRenderer>().sortingOrder = -1;

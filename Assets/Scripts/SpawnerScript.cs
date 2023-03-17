@@ -16,7 +16,7 @@ public class SpawnerScript : MonoBehaviour
     private GameManager gameManager;
     int rnd;
     int spawned_mob;
-    static int Actual_Mob;
+    static int Actual_Mob =0;
     int rndPlace;
     public int MaxWaves = 2;
     int actualWave = 0;
@@ -157,6 +157,7 @@ public class SpawnerScript : MonoBehaviour
                 yield return waveWait;
             }
         }
+        Debug.Log("jesortduwhilebgdelastreet");
         IsFinish = true;
     }
 

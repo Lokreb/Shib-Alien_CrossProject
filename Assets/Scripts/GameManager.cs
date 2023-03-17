@@ -26,24 +26,40 @@ public class GameManager : MonoBehaviour
     public GameObject[] fairy;
     public SoundManager SM;
     public AudioSource AS;
-   
-
+    public RandomRoom RR;
+    public BonusSpawn BS;
+    bool startBonus = false;
     private Scene scene;
-
+    public GameObject[] bonusList;
+    int range;
+    int randomebonus;
     void Start()
     {
        // AS.clip = SM.l_bgms[0].clip;
         SM.PlayBGM(BgmType.BGM1);
-
+        bossStart = false;
         timerTextObject.SetActive(false);
+        BossEnd = false;
+    isIn = false;
+        range = bonusList.Length;
+        randomebonus = Random.Range(0, range);
+        bonusList[randomebonus].SetActive(true);
+
     }
 
     private void Update()
     {
+  
         if ( SpawnerScript.AllKilled == true && SpawnerScript.IsFinish == true)
         {
+            // RR.resetPrefab.gameObject.GetComponentInChildren<BonusSpawn>().SpawnBonus();
+            range = bonusList.Length;
+            randomebonus = Random.Range(0, range);
+            bonusList[randomebonus].SetActive(true);
+            Debug.Log("c'estbienfinitktmonbrolesangjtm");
             clear = true;
             NS.SetActive(true);
+           // BS.SpawnBonus();
         }
         //Debug.Log(RandomRoom.timerBoss);
 

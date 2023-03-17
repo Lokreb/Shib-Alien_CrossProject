@@ -24,7 +24,7 @@ public class RandomRoom : MonoBehaviour
     public int Floor_number = 5;
     int actual_floor = 0;
     int range;
-    GameObject resetPrefab = null;
+    public GameObject resetPrefab = null;
      int iteration = 0;
     static public bool GoBoss =false;
     static public bool timerBoss = false;

@@ -191,7 +191,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 7905685127634981526, guid: 04c5b417019a7b342a7d217b9ca7966f, type: 3}
   bulletForce: 10
   AtkSpeed: 1
-  speed: 3.81
+  speed: 3.1
   degats: 1
   Portee: 3
   target: {fileID: 0}
