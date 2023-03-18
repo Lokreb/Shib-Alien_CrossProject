@@ -30,7 +30,9 @@ using UnityEngine;
 public enum BgmType {
     BGM1,
     BGM2,
-    BGM3
+    BGM3,
+    BGM4,
+    BGM5,
 }
 
 public enum SfxType {
@@ -48,19 +50,20 @@ public class SoundManager : MonoBehaviour
     private AudioSource bgmSource, sfxSource; // background music Source
     [System.Serializable]
     public struct Bgm {
-        public BgmType type;
-        public AudioClip clip;
+        public BgmType level;
+        public AudioClip intro, clip, boss;
     }
 
     [System.Serializable]
     public struct Sfx {
-        public SfxType type;
+        public SfxType level;
         public AudioClip clip;
     }
 
     [Header("Background Musics in project")]
     public List<Bgm> l_bgms = new List<Bgm>(new Bgm[System.Enum.GetNames(typeof(BgmType)).Length]);
-    [Header("Sound Effects in project")]
+
+    [Header("SFX used in project")]
     public List<Sfx> l_sfxs = new List<Sfx>(new Sfx[System.Enum.GetNames(typeof(SfxType)).Length]);
     private Dictionary<BgmType, AudioClip> d_AllBgm = new Dictionary<BgmType, AudioClip>();
     private Dictionary<SfxType, AudioClip> d_AllSfx = new Dictionary<SfxType, AudioClip>();
@@ -72,20 +75,18 @@ public class SoundManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        else
-        {
-            Destroy(gameObject);
-        }
+        else Destroy(gameObject);
 
         foreach(var bgm in l_bgms)
         {
-            d_AllBgm.Add(bgm.type, bgm.clip);
+            d_AllBgm.Add(bgm.level, bgm.clip);
         }
 
         foreach(var sfx in l_sfxs)
         {
-            d_AllSfx.Add(sfx.type, sfx.clip);
+            d_AllSfx.Add(sfx.level, sfx.clip);
         }
+        OrchestrationSong();
     }
 
     /// <summary>Plays the bgm attached to an given BgmType</summary>
@@ -112,7 +113,6 @@ public class SoundManager : MonoBehaviour
     {
         sfxSource.PlayOneShot(sfxClip);
     }
-
 
     /// <summary>Change the volume of all AudioListener in the scene</summary>
     /// <param name="value">Sound volume between 0.0 and 1.0</param>
@@ -177,6 +177,12 @@ public class SoundManager : MonoBehaviour
     public void LoopSfx(bool loop)
     {
         sfxSource.loop = loop;
+    }
+
+    public void OrchestrationSong()
+    {
+        Transform childTransform = transform.Find("Music Source");
+        Debug.Log(childTransform);
     }
 
     /// <summary>Pause the sound of the BGM AudioSource</summary>
