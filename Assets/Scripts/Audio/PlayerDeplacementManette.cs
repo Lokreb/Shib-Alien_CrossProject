@@ -6,13 +6,13 @@ public class PlayerDeplacementManette : MonoBehaviour
 {
     public float speed = 5f; // Vitesse de déplacement du joueur
     public SpriteRenderer render;
+    public SoundManager sm;
     private Rigidbody2D rbp;
     public Sprite[] sprites;
-    private bool isshooting = false;
-
     public bool turnedLeft = false;
     private float horizontal, vertical;
     public float AtkSpeed = 1f;
+    public Animator anim;
 
     private WaitForSeconds atkDelaiDuration;
 
@@ -28,66 +28,21 @@ public class PlayerDeplacementManette : MonoBehaviour
         float vertical = Input.GetAxisRaw("Vertical"); // Récupère l'input vertical de la manette
         rbp.velocity = new Vector2(horizontal * speed, vertical * speed);
         turnedLeft = false;
-        shootingEye();
+        Animation();
+        sm.PlaySFX(SfxType.SFX1);
         Vector2 movement = new Vector2(horizontal, vertical); // Crée un vecteur de mouvement en fonction des inputs
-
         rbp.velocity = movement * speed; // Déplace le joueur en fonction du vecteur de mouvement et de la vitesse
     }
 
 
-    public void shootingEye()
-    {
-
-        if (isshooting)
+        public void Animation()
         {
-            GetComponent<Animator>().enabled = true;
-
-            if (Input.GetKeyDown("d"))
-            {
-                GetComponent<Animator>().Play("PersoAttaqueDroite");
-            }
-            else if (Input.GetKeyDown("q"))
-            { 
-                GetComponent<Animator>().Play("PersoAttaqueGauche");
-            }
-            else if (Input.GetKeyDown("z"))
-            { 
-                GetComponent<Animator>().Play("PersoAttaqueDerriere");
-            }
-            else if (Input.GetKeyDown("s"))
-            {
-                GetComponent<Animator>().Play("PersoAttaqueDevant");
-            }
+            float horizontal = Input.GetAxis("Horizontal");
+            float vertical = Input.GetAxis("Vertical");
+            anim.SetFloat("Right", horizontal);
+            anim.SetFloat("Left", -horizontal);
+            anim.SetFloat("Up", vertical);
+            anim.SetFloat("Down", -vertical);
         }
-        else if (!isshooting)
-        {
-            GetComponent<Animator>().enabled = true;
-            if (horizontal > 0)
-            {
-                GetComponent<Animator>().Play("PersoDeplacementDroite");
-                //render.sprite = sprites[0];
-            }
-            else if (horizontal < 0)
-            {
-                GetComponent<Animator>().Play("PersoDeplacementGauche");
-                //render.sprite = sprites[1];
-                turnedLeft = true;
-            }
-            else if (vertical > 0)
-            {
-                GetComponent<Animator>().Play("PersoDeplacementDerriere");
-                //render.sprite = sprites[2];
-            }
-            else if (vertical < 0)
-            {
-                //render.sprite = sprites[3];
-                GetComponent<Animator>().Play("PersoDeplacementDevant");
-            }
-        }
-
-
-
-    }
-
 
 }

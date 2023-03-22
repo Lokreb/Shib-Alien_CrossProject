@@ -123,6 +123,83 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &423065111
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2084578270392094630, guid: 7911e6601382ce94da1760ace35c97c9, type: 3}
+      propertyPath: Loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084578270392094630, guid: 7911e6601382ce94da1760ace35c97c9, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084578270392094630, guid: 7911e6601382ce94da1760ace35c97c9, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084578270592355817, guid: 7911e6601382ce94da1760ace35c97c9, type: 3}
+      propertyPath: l_bgms.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084578270592355817, guid: 7911e6601382ce94da1760ace35c97c9, type: 3}
+      propertyPath: l_sfxs.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5c5b271252a509042992b4be70b3365f, type: 3}
+    - target: {fileID: 2084578270592355818, guid: 7911e6601382ce94da1760ace35c97c9, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084578270592355818, guid: 7911e6601382ce94da1760ace35c97c9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.04983705
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084578270592355818, guid: 7911e6601382ce94da1760ace35c97c9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.17682758
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084578270592355818, guid: 7911e6601382ce94da1760ace35c97c9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.6462425
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084578270592355818, guid: 7911e6601382ce94da1760ace35c97c9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084578270592355818, guid: 7911e6601382ce94da1760ace35c97c9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084578270592355818, guid: 7911e6601382ce94da1760ace35c97c9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084578270592355818, guid: 7911e6601382ce94da1760ace35c97c9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084578270592355818, guid: 7911e6601382ce94da1760ace35c97c9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084578270592355818, guid: 7911e6601382ce94da1760ace35c97c9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084578270592355818, guid: 7911e6601382ce94da1760ace35c97c9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084578270592355820, guid: 7911e6601382ce94da1760ace35c97c9, type: 3}
+      propertyPath: m_Name
+      value: SoundManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7911e6601382ce94da1760ace35c97c9, type: 3}
 --- !u!1 &1785510263
 GameObject:
   m_ObjectHideFlags: 0
@@ -558,10 +635,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   render: {fileID: 8272677752635948981}
+  sm: {fileID: 0}
   sprites:
+  - {fileID: 21300000, guid: 8c9aed749ac4f4b42b94b52ac9891dc7, type: 3}
+  - {fileID: 21300000, guid: e1cce3d7f51e6664abee91986bd24163, type: 3}
   - {fileID: 21300000, guid: 8be0a42492b85ae4ebe946cc8e4dd888, type: 3}
   - {fileID: 21300000, guid: cf09bece756e24e45847ac93b2ba2ff3, type: 3}
-  - {fileID: 21300000, guid: e1cce3d7f51e6664abee91986bd24163, type: 3}
-  - {fileID: 21300000, guid: 8c9aed749ac4f4b42b94b52ac9891dc7, type: 3}
   turnedLeft: 0
   AtkSpeed: 1
+  anim: {fileID: 9206205337655714520}
